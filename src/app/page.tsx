@@ -7,6 +7,7 @@ import { Slide } from "@/components/slide";
 import { Navigation } from "@/components/navigation";
 import { SlideIndicator } from "@/components/slide-indicator";
 import { HamburgerMenu } from "@/components/hamburger-menu";
+import { AboutSection } from "@/components/about-section";
 
 export default function Home() {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
@@ -25,24 +26,27 @@ export default function Home() {
   const currentSlide = useMemo(() => slides[currentSlideIndex], [currentSlideIndex]);
 
   return (
-    <main className="relative min-h-screen w-full bg-background overflow-hidden">
-      <Header onMenuClick={() => setIsMenuOpen(true)} />
-      <HamburgerMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+    <div className="bg-white">
+      <main className="relative min-h-screen w-full bg-background overflow-hidden">
+        <Header onMenuClick={() => setIsMenuOpen(true)} />
+        <HamburgerMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
 
-      <div className="relative w-full h-screen">
-        <Slide key={currentSlide.id} slide={currentSlide} />
-      </div>
+        <div className="relative w-full h-screen">
+          <Slide key={currentSlide.id} slide={currentSlide} />
+        </div>
 
-      <Navigation
-        onNext={handleNext}
-        onPrev={handlePrev}
-        canGoNext={true}
-        canGoPrev={true}
-      />
-      <SlideIndicator
-        current={currentSlideIndex + 1}
-        total={slides.length}
-      />
-    </main>
+        <Navigation
+          onNext={handleNext}
+          onPrev={handlePrev}
+          canGoNext={true}
+          canGoPrev={true}
+        />
+        <SlideIndicator
+          current={currentSlideIndex + 1}
+          total={slides.length}
+        />
+      </main>
+      <AboutSection />
+    </div>
   );
 }
