@@ -9,6 +9,7 @@ import { SlideIndicator } from "@/components/slide-indicator";
 import { HamburgerMenu } from "@/components/hamburger-menu";
 import { AboutSection } from "@/components/about-section";
 import { PortfolioIntro } from "@/components/portfolio-intro";
+import { OurProjects } from "@/components/our-projects";
 
 export default function Home() {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
@@ -49,6 +50,7 @@ export default function Home() {
       </main>
       <AboutSection />
       <PortfolioIntro />
+      <OurProjects />
     </div>
   );
 }
