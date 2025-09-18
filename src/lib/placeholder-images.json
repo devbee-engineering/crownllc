@@ -1,3 +1,22 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "slide1",
+      "description": "A modern architectural building at dusk.",
+      "imageUrl": "https://picsum.photos/seed/arch1/1920/1080",
+      "imageHint": "modern architecture"
+    },
+    {
+      "id": "slide2",
+      "description": "Interior of a spacious, minimalist living room.",
+      "imageUrl": "https://picsum.photos/seed/arch2/1920/1080",
+      "imageHint": "minimalist interior"
+    },
+    {
+      "id": "slide3",
+      "description": "Abstract view of a building facade with geometric patterns.",
+      "imageUrl": "https://picsum.photos/seed/arch3/1920/1080",
+      "imageHint": "abstract architecture"
+    }
+  ]
 }
