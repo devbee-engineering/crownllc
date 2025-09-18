@@ -17,6 +17,18 @@
       "description": "Abstract view of a building facade with geometric patterns.",
       "imageUrl": "https://picsum.photos/seed/arch3/1920/1080",
       "imageHint": "abstract architecture"
+    },
+    {
+      "id": "about-us",
+      "description": "Modern building with trees and water feature",
+      "imageUrl": "https://picsum.photos/seed/about-us/600/800",
+      "imageHint": "modern architecture"
+    },
+    {
+      "id": "portfolioBg",
+      "description": "Low angle view of a modern skyscraper facade",
+      "imageUrl": "https://picsum.photos/seed/portfolio-bg/800/1200",
+      "imageHint": "skyscraper facade"
     }
   ]
 }
