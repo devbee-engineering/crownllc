@@ -29,6 +29,12 @@
       "description": "Low angle view of a modern skyscraper facade",
       "imageUrl": "https://picsum.photos/seed/portfolio-bg/800/1200",
       "imageHint": "skyscraper facade"
+    },
+    {
+      "id": "footerBg",
+      "description": "Architectural courtyard with trees",
+      "imageUrl": "https://picsum.photos/seed/footer-bg/1000/1200",
+      "imageHint": "architectural courtyard"
     }
   ]
 }

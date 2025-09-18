@@ -11,6 +11,7 @@ import { AboutSection } from "@/components/about-section";
 import { PortfolioIntro } from "@/components/portfolio-intro";
 import { OurProjects } from "@/components/our-projects";
 import { ExpertiseSection } from "@/components/expertise-section";
+import { Footer } from "@/components/footer";
 
 export default function Home() {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
@@ -53,6 +54,7 @@ export default function Home() {
       <PortfolioIntro />
       <OurProjects />
       <ExpertiseSection />
+      <Footer />
     </div>
   );
 }
