@@ -1,38 +1,64 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/logo";
-import { FooterBrandHeader } from "./footer-brand-header";
+import { cn } from "@/lib/utils";
 
 type HeaderProps = {
   onMenuClick: () => void;
+  isHomePage?: boolean;
 };
 
-export function Header({ onMenuClick }: HeaderProps) {
+const navItems = [
+    { href: "/", label: "HOME" },
+    { href: "/about", label: "ABOUT US" },
+    { href: "/our-projects", label: "SERVICES" },
+    { href: "/expertise", label: "EXPERTISE" },
+    { href: "/contact", label: "CONTACT" },
+    { href: "/gallery", label: "GALLERY" },
+];
+
+
+export function Header({ onMenuClick, isHomePage = false }: HeaderProps) {
+    const pathname = usePathname();
+    const headerClasses = isHomePage
+    ? "absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-4 md:p-8"
+    : "relative flex items-center justify-between p-4 md:p-8 bg-white text-black";
+    
+    const navLinkClasses = isHomePage ? "hover:text-primary" : "hover:text-black/70";
+    const activeLinkClasses = isHomePage ? "text-primary" : "text-black font-semibold";
+    const iconButtonClasses = isHomePage ? "text-primary hover:bg-primary/10" : "text-black hover:bg-black/10";
+
+
   return (
-    <header className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-4 md:p-8">
+    <header className={headerClasses}>
       <div className="flex items-center gap-4 flex-1">
         <Button
           variant="ghost"
           size="icon"
           aria-label="Menu"
           onClick={onMenuClick}
-          className="text-primary hover:bg-primary/10 md:hidden"
+          className={cn("md:hidden", iconButtonClasses)}
         >
           <Menu className="size-6" />
         </Button>
-        <Logo />
-        {/* Navbar - only visible on md and up */}
+        <Logo className={isHomePage ? 'border-primary text-primary' : 'border-black text-black'}/>
         <nav className="hidden md:flex flex-1 justify-center">
-          <ul className="flex gap-12 text-base font-medium">
-            <li><a href="#about" className="hover:text-primary">HOME</a></li>
-            <li><a href="#projects" className="hover:text-primary">ABOUT US</a></li>
-            <li><a href="#expertise" className="hover:text-primary">SERVICES</a></li>
-            <li><a href="#contact" className="hover:text-primary">CONTACT</a></li>
-            <li><a href="#careers" className="hover:text-primary">GALLERY</a></li>
+          <ul className={cn("flex gap-12 text-base font-medium", isHomePage ? "text-primary" : "text-black/80")}>
+            {navItems.map((item) => (
+                 <li key={item.href}>
+                    <Link href={item.href} className={cn(navLinkClasses, pathname === item.href && activeLinkClasses)}>
+                        {item.label}
+                    </Link>
+                </li>
+            ))}
           </ul>
         </nav>
       </div>
-      <Button variant="ghost" size="icon" aria-label="Search" className="text-primary hover:bg-primary/10">
+      <Button variant="ghost" size="icon" aria-label="Search" className={iconButtonClasses}>
         <Search className="size-6" />
       </Button>
     </header>
