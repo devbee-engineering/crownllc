@@ -12,11 +12,11 @@ export function ExpertiseSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5 relative">
              <div className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-full hidden lg:block pl-4">
-                <HamburgerIcon />
+                
             </div>
             <div className="flex flex-col h-full">
               <div className="flex-shrink-0">
-                <Logo className="border-gray-800 text-gray-800" />
+                {/* <Logo className="border-gray-800 text-gray-800" /> */}
                 <p className="mt-8 text-sm uppercase tracking-widest text-gray-500">
                   What we do
                 </p>

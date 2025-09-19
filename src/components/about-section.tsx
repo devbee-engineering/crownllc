@@ -13,14 +13,8 @@ export function AboutSection() {
       className="bg-white text-black py-12 md:py-16 lg:py-24"
     >
       <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
-        <AboutSectionHeader />
+        {/* <AboutSectionHeader /> */}
         <div className="mt-8 lg:mt-16 grid grid-cols-1 lg:grid-cols-12 lg:gap-8 relative">
-          <div className="hidden lg:block lg:col-span-1">
-            <div className="absolute top-0 -left-4 h-full">
-              <HamburgerIcon />
-            </div>
-          </div>
-
           <div className="lg:col-span-4 flex flex-col">
             <div className="lg:order-1">
               <p className="text-sm uppercase tracking-widest text-gray-500">

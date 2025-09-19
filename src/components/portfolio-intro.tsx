@@ -32,10 +32,7 @@ export function PortfolioIntro() {
           )}
           <div className="absolute inset-0 bg-black/10"></div>
           <div className="relative z-10 p-8">
-            <Logo className="border-gray-800 text-gray-800" />
-          </div>
-          <div className="absolute top-1/2 left-8 -translate-y-1/2 z-10">
-            <HamburgerIcon />
+            {/* <Logo className="border-gray-800 text-gray-800" /> */}
           </div>
           {portfolioBg && (
              <div className="absolute bottom-8 left-8 z-10 text-white text-sm">

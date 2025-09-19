@@ -9,8 +9,8 @@ const locations = [
     {
       city: "Abu Dhabi",
       address: [
-        "Office 201, Al Waratha Building",
-        "Block 3, Khaleefa St",
+        "office no 303, Makateb Building",
+        "maktoum road, Deira - Dubai, UAE",
       ],
     },
     {

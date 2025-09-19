@@ -13,13 +13,13 @@ export function Footer() {
     <footer
       id="locations-heading"
       aria-labelledby="locations-heading-title"
-      className="bg-white text-black"
+      className="bg-white text-black flex items-center justify-center min-h-screen"
     >
       <h2 id="locations-heading-title" className="sr-only">
         Company locations and footer
       </h2>
-      <div className="flex flex-col lg:grid lg:grid-cols-2">
-        <div className="relative h-[400px] lg:h-auto">
+  <div className="flex flex-col items-center justify-center w-full">
+        {/* <div className="relative h-[400px] lg:h-auto">
           {footerBg && (
             <Image
               src={footerBg.imageUrl}
@@ -29,19 +29,13 @@ export function Footer() {
               data-ai-hint={footerBg.imageHint}
             />
           )}
-          <div className="absolute top-1/2 left-8 -translate-y-1/2 z-10 hidden lg:block">
-            <HamburgerIcon />
-          </div>
           {footerBg && <CaptionOverlay caption="Residence 22, Dubai, UAE" />}
-        </div>
+        </div> */}
 
-        <div className="flex flex-col items-center justify-center py-12 md:py-16 lg:py-24 px-4 sm:px-6 lg:px-12">
-            <div className="w-full max-w-5xl mx-auto flex flex-col gap-12 md:gap-16 lg:gap-24">
-                <FooterBrandHeader />
-                <hr className="border-black/10" />
-                <Locations />
-                <LegalBar />
-            </div>
+        <div className="flex flex-col items-center justify-center py-12 md:py-16 lg:py-24 px-4 sm:px-6 lg:px-12 w-full max-w-5xl mx-auto gap-12 md:gap-16 lg:gap-24">
+          <hr className="border-black/10 w-full" />
+          <Locations />
+          <LegalBar />
         </div>
       </div>
     </footer>
