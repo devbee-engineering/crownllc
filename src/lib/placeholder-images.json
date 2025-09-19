@@ -1,39 +1,40 @@
+
 {
   "placeholderImages": [
     {
       "id": "slide1",
       "description": "A modern architectural building at dusk.",
-      "imageUrl": "https://picsum.photos/seed/arch1/1920/1080",
+      "imageUrl": "/assets/images/header_courosel-1.png",
       "imageHint": "modern architecture"
     },
     {
       "id": "slide2",
       "description": "Interior of a spacious, minimalist living room.",
-      "imageUrl": "https://picsum.photos/seed/arch2/1920/1080",
+      "imageUrl": "/assets/images/header_courosel-2.png",
       "imageHint": "minimalist interior"
     },
     {
       "id": "slide3",
       "description": "Abstract view of a building facade with geometric patterns.",
-      "imageUrl": "https://picsum.photos/seed/arch3/1920/1080",
+      "imageUrl": "/assets/images/header_courosel-3.webp",
       "imageHint": "abstract architecture"
     },
     {
       "id": "about-us",
       "description": "Modern building with trees and water feature",
-      "imageUrl": "https://picsum.photos/seed/about-us/600/800",
+      "imageUrl": "/assets/images/header_courosel-4.png",
       "imageHint": "modern architecture"
     },
     {
       "id": "portfolioBg",
       "description": "Low angle view of a modern skyscraper facade",
-      "imageUrl": "https://picsum.photos/seed/portfolio-bg/800/1200",
+      "imageUrl": "/assets/images/header_courosel-5.png",
       "imageHint": "skyscraper facade"
     },
     {
       "id": "footerBg",
       "description": "Architectural courtyard with trees",
-      "imageUrl": "https://picsum.photos/seed/footer-bg/1000/1200",
+      "imageUrl": "/assets/images/header_courosel-6.png",
       "imageHint": "architectural courtyard"
     }
   ]
