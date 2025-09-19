@@ -16,6 +16,7 @@ const navItems = [
     { href: "/", label: "HOME" },
     { href: "/about", label: "ABOUT US" },
     { href: "/our-projects", label: "OUR PROJECTS" },
+    { href: "/services", label: "SERVICES" },
     { href: "/expertise", label: "EXPERTISE" },
     { href: "/contact", label: "CONTACT" },
     { href: "/gallery", label: "GALLERY" },
@@ -33,6 +34,7 @@ export function Header({ onMenuClick, isHomePage = false }: HeaderProps) {
     const iconButtonClasses = isHomePage ? "text-primary hover:bg-primary/10" : "text-black hover:bg-black/10";
 
   const isProjectsActive = pathname.startsWith('/projects') || pathname === '/our-projects';
+  const isServicesActive = pathname.startsWith('/services');
 
   return (
     <header className={headerClasses}>
@@ -50,7 +52,14 @@ export function Header({ onMenuClick, isHomePage = false }: HeaderProps) {
         <nav className="hidden md:flex flex-1 justify-center">
           <ul className={cn("flex gap-12 text-base font-medium", isHomePage ? "text-primary" : "text-black/80")}>
             {navItems.map((item) => {
-              const isActive = item.href === '/our-projects' ? isProjectsActive : pathname === item.href;
+              let isActive = pathname === item.href;
+              if (item.href === '/our-projects') {
+                isActive = isProjectsActive;
+              }
+              if (item.href === '/services') {
+                isActive = isServicesActive;
+              }
+
               return (
                  <li key={item.href}>
                     <Link href={item.href} className={cn(navLinkClasses, isActive && activeLinkClasses)}>
