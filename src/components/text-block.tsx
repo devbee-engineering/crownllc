@@ -13,7 +13,7 @@ const content = [
   {
     title: "Meticulous in the Middle East",
     paragraph:
-      "DCC is the pinnacle of detail, drive and a desire for design. Our innovative techniques continually raise the bar in construction expertise and excellence.",
+      "Crown LLC is the pinnacle of detail, drive and a desire for design. Our innovative techniques continually raise the bar in construction expertise and excellence.",
   },
   {
     title: "Building a Better Future",

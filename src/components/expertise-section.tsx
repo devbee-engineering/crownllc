@@ -30,7 +30,7 @@ export function ExpertiseSection() {
               </div>
               <div className="mt-8">
                  <p className="text-base text-gray-600 max-w-[420px]">
-                    DCC as a family have been expert in the construction industry for over 60 years - it&apos;s in our DNA. We&apos;ve expanded beyond construction to design, interiors and furnishings - from concept to completion.
+                    Crown LLC as a family have been expert in the construction industry for over 60 years - it&apos;s in our DNA. We&apos;ve expanded beyond construction to design, interiors and furnishings - from concept to completion.
                  </p>
               </div>
             </div>

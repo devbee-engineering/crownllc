@@ -10,12 +10,12 @@ export const aboutAlts = {
 };
   
 export const aboutImages = {
-    hero: "/assets/about/hero-strip.jpg",
-    whoBand: "/assets/about/who-band.jpg",
-    gridLeft: "/assets/about/grid-left.jpg",
-    gridRight: "/assets/about/grid-right.jpg",
-    wood: "/assets/about/accordion-wood.jpg",
-    missionHero: "/assets/about/mission-hero.jpg",
+    hero: "/assets/about/about_img-1.png",
+    whoBand: "/assets/about/about-img-5.png",
+    gridLeft: "/assets/about/about-img-4.png",
+    gridRight: "/assets/about/about-img-2.png",
+    wood: "/assets/about/about-img-6.png",
+    missionHero: "/assets/about/about-img-3.png",
     timeline: [
       {
         year: 1964,
@@ -23,9 +23,9 @@ export const aboutImages = {
         city: "Dubai",
         body:
           "Male and female wards, maternity ward, and elevated concrete water storage tank.",
-        image: "/assets/about/history-1964.jpg"
+        image: "/assets/about/about-img-5.png"
       },
-      { year: 1967, title: "Dubai Petroleum HQ", city: "Dubai", body: "The first high-rise building in Dubai, a landmark project that set the stage for the city's future growth.", image: "/assets/about/history-1967.jpg" }
+      { year: 1967, title: "Dubai Petroleum HQ", city: "Dubai", body: "The first high-rise building in Dubai, a landmark project that set the stage for the city's future growth.", image: "/assets/about/about-img-9.png" }
     ]
 };
   

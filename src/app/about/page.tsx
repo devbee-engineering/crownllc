@@ -18,7 +18,7 @@ import { SectionEyebrow } from '@/components/section-eyebrow';
 export default function AboutPage() {
   return (
     <div className="bg-white text-[#0B0B0B]">
-      <HamburgerGutter />
+      {/* <HamburgerGutter /> */}
       <main>
         {/* Hero Section */}
         <section className="bg-[#F5F6F6]">
