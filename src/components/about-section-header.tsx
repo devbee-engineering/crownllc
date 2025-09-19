@@ -30,7 +30,7 @@ function DccLogo() {
 export function AboutSectionHeader() {
   return (
     <header className="flex justify-between items-center">
-      <DccLogo />
+      {/* <DccLogo /> */}
       <div className="flex items-center gap-4">
         <button className="text-sm uppercase tracking-widest text-[#111] font-medium">
           More About Us

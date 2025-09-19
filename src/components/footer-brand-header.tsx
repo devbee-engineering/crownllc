@@ -1,7 +1,7 @@
 import { Search } from "lucide-react";
 import { Logo } from "@/components/logo";
 
-const navItems = ["About us", "Our Projects", "Expertise", "Contact", "Careers"];
+const navItems = ["Home", "About", "Service", "Contact", "Gallery"];
 
 function DccLogoFooter() {
   return (
