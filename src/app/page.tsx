@@ -12,10 +12,13 @@ import { PortfolioIntro } from "@/components/portfolio-intro";
 import { OurProjects } from "@/components/our-projects";
 import { ExpertiseSection } from "@/components/expertise-section";
 import { Footer } from "@/components/footer";
+import { usePathname } from "next/navigation";
 
 export default function Home() {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === '/';
 
   const handleNext = () => {
     setCurrentSlideIndex((prevIndex) => (prevIndex + 1) % slides.length);
@@ -31,8 +34,8 @@ export default function Home() {
 
   return (
     <div className="bg-white">
+      <Header onMenuClick={() => setIsMenuOpen(true)} isHomePage={isHomePage}/>
       <main className="relative min-h-screen w-full bg-background overflow-hidden">
-        <Header onMenuClick={() => setIsMenuOpen(true)} />
         <HamburgerMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
 
         <div className="relative w-full h-screen">
