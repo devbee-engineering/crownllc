@@ -9,7 +9,7 @@ const featuredProject = {
   title: "Rolex Tower",
   category: "Mixed-use",
   location: "Dubai - Sheikh Zayed Road",
-  imageUrl: "https://picsum.photos/seed/rolex/600/800",
+  imageUrl: "/assets/images/header_courosel-2.png",
   imageHint: "city skyscraper",
 };
 
