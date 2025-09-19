@@ -1,19 +1,30 @@
-import type {Metadata} from 'next';
+"use client";
+
+import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
+import { usePathname } from 'next/navigation';
+import { HamburgerMenu } from '@/components/hamburger-menu';
+import { useState } from 'react';
 
-export const metadata: Metadata = {
-  title: 'ArchSlide',
-  description: 'A responsive website slide with a modern architectural theme.',
-};
+// Metadata can't be exported from a client component, so we define it here.
+// We can remove this if we don't need it.
+// export const metadata: Metadata = {
+//   title: 'ArchSlide',
+//   description: 'A responsive website slide with a modern architectural theme.',
+// };
 
-export default function RootLayout({
+function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = usePathname();
+  const isHomePage = pathname === '/';
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <html lang="en" className="bg-white">
       <head>
@@ -22,12 +33,14 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased">
-        {/* The header is now part of the layout, but we hide it on the homepage */}
-        {/* The homepage has its own specific header implementation */}
-        {/* A more robust solution might use path checking to conditionally render */}
+        <Header onMenuClick={() => setIsMenuOpen(true)} isHomePage={isHomePage} />
+        <HamburgerMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
         {children}
+        <Footer />
         <Toaster />
       </body>
     </html>
   );
 }
+
+export default RootLayout;

@@ -2,23 +2,16 @@
 
 import { useState, useMemo } from "react";
 import { slides } from "@/lib/slides";
-import { Header } from "@/components/header";
 import { Slide } from "@/components/slide";
 import { Navigation } from "@/components/navigation";
 import { SlideIndicator } from "@/components/slide-indicator";
-import { HamburgerMenu } from "@/components/hamburger-menu";
 import { AboutSection } from "@/components/about-section";
 import { PortfolioIntro } from "@/components/portfolio-intro";
 import { OurProjects } from "@/components/our-projects";
 import { ExpertiseSection } from "@/components/expertise-section";
-import { Footer } from "@/components/footer";
-import { usePathname } from "next/navigation";
 
 export default function Home() {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const pathname = usePathname();
-  const isHomePage = pathname === '/';
 
   const handleNext = () => {
     setCurrentSlideIndex((prevIndex) => (prevIndex + 1) % slides.length);
@@ -34,10 +27,7 @@ export default function Home() {
 
   return (
     <div className="bg-white">
-      <Header onMenuClick={() => setIsMenuOpen(true)} isHomePage={isHomePage}/>
       <main className="relative min-h-screen w-full bg-background overflow-hidden">
-        <HamburgerMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
-
         <div className="relative w-full h-screen">
           <Slide key={currentSlide.id} slide={currentSlide} />
         </div>
@@ -57,7 +47,6 @@ export default function Home() {
       <PortfolioIntro />
       <OurProjects />
       <ExpertiseSection />
-      <Footer />
     </div>
   );
 }
