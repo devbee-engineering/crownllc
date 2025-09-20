@@ -1,16 +1,24 @@
+
 "use client";
 
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/logo";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 type HamburgerMenuProps = {
   isOpen: boolean;
   onClose: () => void;
 };
 
-const navItems = ["About us", "Our Projects", "Expertise", "Contact", "Careers"];
+const navItems = [
+    { href: "/about", label: "About us" },
+    { href: "/our-projects", label: "Our Projects" },
+    { href: "/expertise", label: "Expertise" },
+    { href: "/contact", label: "Contact" },
+    { href: "/careers", label: "Careers" },
+];
 
 export function HamburgerMenu({ isOpen, onClose }: HamburgerMenuProps) {
   return (
@@ -27,13 +35,14 @@ export function HamburgerMenu({ isOpen, onClose }: HamburgerMenuProps) {
         <nav className="flex-grow flex items-center">
           <ul>
             {navItems.map((item) => (
-              <li key={item} className="my-4">
-                <a
-                  href="#"
+              <li key={item.label} className="my-4">
+                <Link
+                  href={item.href}
                   className="text-4xl text-gray-400 hover:text-gray-800 transition-colors"
+                  onClick={onClose}
                 >
-                  {item}
-                </a>
+                  {item.label}
+                </Link>
               </li>
             ))}
           </ul>
