@@ -15,7 +15,7 @@ type HeaderProps = {
 const navItems = [
     { href: "/", label: "HOME" },
     { href: "/about", label: "ABOUT US" },
-    // { href: "/our-projects", label: "OUR PROJECTS" },
+    { href: "/our-projects", label: "OUR PROJECTS" },
     { href: "/services", label: "SERVICES" },
     { href: "/expertise", label: "EXPERTISE" },
     { href: "/contact", label: "CONTACT" },
@@ -35,6 +35,7 @@ export function Header({ onMenuClick, isHomePage = false }: HeaderProps) {
 
   const isProjectsActive = pathname.startsWith('/projects') || pathname === '/our-projects';
   const isServicesActive = pathname.startsWith('/services');
+  const isExpertiseActive = pathname.startsWith('/expertise');
 
   return (
     <header className={headerClasses}>
@@ -58,6 +59,9 @@ export function Header({ onMenuClick, isHomePage = false }: HeaderProps) {
               }
               if (item.href === '/services') {
                 isActive = isServicesActive;
+              }
+              if (item.href === '/expertise') {
+                isActive = isExpertiseActive;
               }
 
               return (
