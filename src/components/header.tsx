@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -20,6 +21,7 @@ const navItems = [
     { href: "/expertise", label: "EXPERTISE" },
     { href: "/contact", label: "CONTACT" },
     { href: "/gallery", label: "GALLERY" },
+    { href: "/careers", label: "CAREERS"}
 ];
 
 
@@ -36,6 +38,9 @@ export function Header({ onMenuClick, isHomePage = false }: HeaderProps) {
   const isProjectsActive = pathname.startsWith('/projects') || pathname === '/our-projects';
   const isServicesActive = pathname.startsWith('/services');
   const isExpertiseActive = pathname.startsWith('/expertise');
+  const isContactActive = pathname.startsWith('/contact');
+  const isCareersActive = pathname.startsWith('/careers');
+
 
   return (
     <header className={headerClasses}>
@@ -62,6 +67,12 @@ export function Header({ onMenuClick, isHomePage = false }: HeaderProps) {
               }
               if (item.href === '/expertise') {
                 isActive = isExpertiseActive;
+              }
+              if (item.href === '/contact') {
+                isActive = isContactActive;
+              }
+              if (item.href === '/careers') {
+                isActive = isCareersActive;
               }
 
               return (
