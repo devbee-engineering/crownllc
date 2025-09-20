@@ -1,8 +1,8 @@
 export const expertiseImages = {
-    hero: "/assets/expertise/hero.jpg",
-    lobby: "/assets/expertise/lobby.jpg",
-    detail: "/assets/expertise/grid-detail.jpg",
-    tower: "/assets/expertise/grid-tower.jpg",
+    hero: "/assets/expertise/expertise_image-1.png",
+    lobby: "/assets/expertise/expertise_image-2.png",
+    detail: "/assets/expertise/expertise_image-3.png",
+    tower: "/assets/expertise/expertise_image-4.png",
 };
 
 export const expertiseAlts = {
