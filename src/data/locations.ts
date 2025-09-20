@@ -17,7 +17,7 @@ export const locations: Location[] = [
       country: "United Arab Emirates",
       phone: "+971 (0)4 333 7100",
       email: "dcc@dcc-group.com",
-      image: "/assets/contact/dubai.jpg",
+      image: "/assets/contact/contact_image-1.png",
     },
     {
       title: "UAE - Abu Dhabi",
@@ -26,7 +26,7 @@ export const locations: Location[] = [
       country: "United Arab Emirates",
       phone: "+971 (0)2 626 7930",
       email: "dccauh@dcc-group.com",
-      image: "/assets/contact/abudhabi.jpg",
+      image: "/assets/contact/contact_image-2.png",
     },
     {
       title: "KSA - Riyadh",
@@ -35,6 +35,6 @@ export const locations: Location[] = [
       country: "Kingdom of Saudi Arabia",
       phone: "+966 (0)11 200 8267",
       email: "dccksa@dcc-group.com",
-      image: "/assets/contact/riyadh.jpg",
+      image: "/assets/contact/contact_image-3.png",
     },
 ];
