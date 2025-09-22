@@ -2,31 +2,17 @@ const locations = [
     {
       city: "Dubai",
       address: [
-        " office no 303, Makateb Building",
+        "office no 303, Makateb Building",
         "maktoum road, Deira - Dubai, UAE",
       ],
     },
-    // {
-    //   city: "Abu Dhabi",
-    //   address: [
-    //     "office no 303, Makateb Building",
-    //     "maktoum road, Deira - Dubai, UAE",
-    //   ],
-    // },
-    // {
-    //   city: "Riyadh",
-    //   address: [
-    //     "Tatweer Towers, Tower No 1",
-    //     "Ground Floor, King Fahad Rd",
-    //   ],
-    // },
   ];
   
   export function Locations() {
     return (
       <div className="w-full">
         <h2 className="text-sm uppercase tracking-widest text-black/60 mb-8">
-          Locations
+          Location
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {locations.map((location) => (
