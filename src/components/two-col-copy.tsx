@@ -4,14 +4,14 @@ export function TwoColCopy() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16">
                 <div className="lg:col-span-1">
                     <h2 className="text-4xl md:text-5xl font-light tracking-tight text-[#0B0B0B]">
-                        Who is Crown LLC?
+                        Who is Crown Pillars?
                     </h2>
                 </div>
                 <div className="lg:col-span-1">
                     <p className="text-base text-gray-700 leading-relaxed">
-                        With an extensive and diverse portfolio of projects, Crown LLC has been a key player in the construction of a modern Dubai. From the iconic Rolex Tower to the bustling Deira Market, our work is a testament to our commitment to quality and innovation.
+                        With an extensive and diverse portfolio of projects, Crown Pillars has been a key player in the construction of a modern Dubai. From the iconic Rolex Tower to the bustling Deira Market, our work is a testament to our commitment to quality and innovation.
                         <br/><br/>
-                        We are a family business with a legacy of over 60 years. Crown LLC was founded on the principles of honesty, integrity, and a passion for building. These values continue to guide us today.
+                        We are a family business with a legacy of over 60 years. Crown Pillars was founded on the principles of honesty, integrity, and a passion for building. These values continue to guide us today.
                     </p>
                 </div>
                  <div className="lg:col-span-1">
