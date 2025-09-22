@@ -2,24 +2,24 @@ const locations = [
     {
       city: "Dubai",
       address: [
-        "Building No 29, St 13",
-        "Industrial Area 1, Ras Al Khor",
-      ],
-    },
-    {
-      city: "Abu Dhabi",
-      address: [
-        "office no 303, Makateb Building",
+        " office no 303, Makateb Building",
         "maktoum road, Deira - Dubai, UAE",
       ],
     },
-    {
-      city: "Riyadh",
-      address: [
-        "Tatweer Towers, Tower No 1",
-        "Ground Floor, King Fahad Rd",
-      ],
-    },
+    // {
+    //   city: "Abu Dhabi",
+    //   address: [
+    //     "office no 303, Makateb Building",
+    //     "maktoum road, Deira - Dubai, UAE",
+    //   ],
+    // },
+    // {
+    //   city: "Riyadh",
+    //   address: [
+    //     "Tatweer Towers, Tower No 1",
+    //     "Ground Floor, King Fahad Rd",
+    //   ],
+    // },
   ];
   
   export function Locations() {
