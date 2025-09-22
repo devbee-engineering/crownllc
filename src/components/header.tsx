@@ -14,14 +14,14 @@ type HeaderProps = {
 };
 
 const navItems = [
-    { href: "/", label: "HOME" },
-    { href: "/about", label: "ABOUT US" },
-    // { href: "/our-projects", label: "OUR PROJECTS" },
-    { href: "/services", label: "SERVICES" },
-    { href: "/expertise", label: "EXPERTISE" },
-    { href: "/contact", label: "CONTACT" },
-    { href: "/gallery", label: "GALLERY" },
-    // { href: "/careers", label: "CAREERS"}
+  { href: "/", label: "HOME" },
+  { href: "/about", label: "ABOUT US" },
+  // { href: "/our-projects", label: "OUR PROJECTS" },
+  { href: "/expertise", label: "SERVICES" }, // swapped
+  { href: "/services", label: "OUR PROJECTS" }, // swapped
+  { href: "/contact", label: "CONTACT" },
+  // { href: "/gallery", label: "GALLERY" },
+  // { href: "/careers", label: "CAREERS"}
 ];
 
 

@@ -4,11 +4,17 @@ import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const content = {
-    mission: "Our mission is to deliver high-quality, cost-effective projects on schedule by employing and supporting motivated, flexible, and focused teams. We value the importance of our relationships and will continue to remain fair and true in our dealings with all employees, clients, vendors, and partners.",
-    vision: "Our vision is to be the leading construction company in our chosen markets, sought after by potential clients and employees for our track record in delivering excellence, and for our commitment to safety, employee development, and community involvement."
+    mission: "To deliver quality construction services that exceed client expectations through professionalism, innovation, and reliability.",
+    vision: "To be recognized as one of the most trusted and innovative contracting companies in the UAE.",
+    values: [
+        "Integrity: Transparent and ethical business practices",
+        "Quality: Attention to detail and superior workmanship",
+        "Safety: Committed to a safe work environment for all",
+        "Timely Delivery: Projects completed as promised",
+    ],
 };
 
-type Tab = "mission" | "vision";
+type Tab = "mission" | "vision" | "values";
 
 export function MissionVision() {
     const [activeTab, setActiveTab] = useState<Tab>("mission");
@@ -36,20 +42,44 @@ export function MissionVision() {
                         >
                             Vision
                         </button>
+                        <button 
+                            onClick={() => setActiveTab("values")}
+                            className={cn(
+                                "text-3xl md:text-4xl font-light transition-colors",
+                                activeTab === 'values' ? 'text-[#0B0B0B]' : 'text-gray-300 hover:text-gray-500'
+                            )}
+                        >
+                            Our Values
+                        </button>
                     </div>
                 </div>
                 <div className="md:col-span-2">
                     <AnimatePresence mode="wait">
-                        <motion.p
-                            key={activeTab}
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -10 }}
-                            transition={{ duration: 0.3 }}
-                            className="text-base md:text-lg text-gray-700 leading-relaxed max-w-prose"
-                        >
-                            {content[activeTab]}
-                        </motion.p>
+                        {activeTab !== "values" ? (
+                            <motion.p
+                                key={activeTab}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -10 }}
+                                transition={{ duration: 0.3 }}
+                                className="text-base md:text-lg text-gray-700 leading-relaxed max-w-prose"
+                            >
+                                {content[activeTab]}
+                            </motion.p>
+                        ) : (
+                            <motion.ul
+                                key="values"
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -10 }}
+                                transition={{ duration: 0.3 }}
+                                className="list-disc pl-6 text-base md:text-lg text-gray-700 leading-relaxed max-w-prose"
+                            >
+                                {content.values.map((value, idx) => (
+                                    <li key={idx}>{value}</li>
+                                ))}
+                            </motion.ul>
+                        )}
                     </AnimatePresence>
                 </div>
             </div>
