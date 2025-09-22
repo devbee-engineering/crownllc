@@ -13,11 +13,12 @@ type HamburgerMenuProps = {
 };
 
 const navItems = [
+    { href: "/", label: "Home" },
     { href: "/about", label: "About us" },
-    { href: "/our-projects", label: "Our Projects" },
-    { href: "/expertise", label: "Expertise" },
+    { href: "/expertise", label: "Services" },
+    { href: "/services", label: "Our Projects" },
     { href: "/contact", label: "Contact" },
-    { href: "/careers", label: "Careers" },
+    // { href: "/careers", label: "Careers" },
 ];
 
 export function HamburgerMenu({ isOpen, onClose }: HamburgerMenuProps) {
