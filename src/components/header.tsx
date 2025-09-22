@@ -7,6 +7,7 @@ import { Menu, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/logo";
 import { cn } from "@/lib/utils";
+import { useEffect, useState } from "react";
 
 type HeaderProps = {
   onMenuClick: () => void;
@@ -16,30 +17,47 @@ type HeaderProps = {
 const navItems = [
   { href: "/", label: "HOME" },
   { href: "/about", label: "ABOUT US" },
-  // { href: "/our-projects", label: "OUR PROJECTS" },
-  { href: "/expertise", label: "SERVICES" }, // swapped
-  { href: "/services", label: "OUR PROJECTS" }, // swapped
+  { href: "/expertise", label: "SERVICES" },
+  { href: "/services", label: "OUR PROJECTS" },
   { href: "/contact", label: "CONTACT" },
-  // { href: "/gallery", label: "GALLERY" },
-  // { href: "/careers", label: "CAREERS"}
 ];
 
 
 export function Header({ onMenuClick, isHomePage = false }: HeaderProps) {
     const pathname = usePathname();
-    const headerClasses = isHomePage
-    ? "absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-4 md:p-8"
-    : "relative flex items-center justify-between p-4 md:p-8 bg-white text-black";
-    
-    const navLinkClasses = isHomePage ? "hover:text-primary" : "hover:text-black/70";
-    const activeLinkClasses = isHomePage ? "text-primary" : "text-black font-semibold";
-    const iconButtonClasses = isHomePage ? "text-primary hover:bg-primary/10" : "text-black hover:bg-black/10";
+    const [isScrolled, setIsScrolled] = useState(false);
 
-  const isProjectsActive = pathname.startsWith('/projects') || pathname === '/our-projects';
-  const isServicesActive = pathname.startsWith('/services');
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 0);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const headerClasses = cn(
+        "sticky top-0 z-50 flex items-center justify-between p-4 md:p-8 transition-colors duration-300",
+        isHomePage && !isScrolled
+            ? "bg-transparent text-white"
+            : "bg-white text-black shadow-md"
+    );
+    
+    const navLinkClasses = cn(
+        "transition-colors",
+        isHomePage && !isScrolled ? "hover:text-primary/80" : "hover:text-black/70"
+    );
+
+    const activeLinkClasses = isHomePage && !isScrolled ? "text-primary font-semibold" : "text-black font-semibold";
+    
+    const iconButtonClasses = cn(
+        "transition-colors",
+        isHomePage && !isScrolled ? "text-primary hover:bg-primary/10" : "text-black hover:bg-black/10"
+    );
+
+  const isProjectsActive = pathname.startsWith('/projects') || pathname === '/our-projects' || pathname.startsWith('/services');
   const isExpertiseActive = pathname.startsWith('/expertise');
   const isContactActive = pathname.startsWith('/contact');
-  const isCareersActive = pathname.startsWith('/careers');
+  const isAboutActive = pathname.startsWith('/about');
 
 
   return (
@@ -54,25 +72,16 @@ export function Header({ onMenuClick, isHomePage = false }: HeaderProps) {
         >
           <Menu className="size-6" />
         </Button>
-        <Logo className="hidden md:block" />  <nav className="hidden md:flex flex-1 justify-center">
-          <ul className={cn("flex gap-12 text-base font-medium", isHomePage ? "text-primary" : "text-black/80")}>
+        <Logo className="hidden md:block" isScrolled={isScrolled} isHomePage={isHomePage} />
+        <nav className="hidden md:flex flex-1 justify-center">
+          <ul className={cn("flex gap-12 text-sm font-medium tracking-wider", isHomePage && !isScrolled ? "text-primary" : "text-black/80")}>
             {navItems.map((item) => {
               let isActive = pathname === item.href;
-              if (item.href === '/our-projects') {
-                isActive = isProjectsActive;
-              }
-              if (item.href === '/services') {
-                isActive = isServicesActive;
-              }
-              if (item.href === '/expertise') {
-                isActive = isExpertiseActive;
-              }
-              if (item.href === '/contact') {
-                isActive = isContactActive;
-              }
-              if (item.href === '/careers') {
-                isActive = isCareersActive;
-              }
+              if (item.href === '/') isActive = pathname === '/';
+              if (item.href === '/about') isActive = isAboutActive;
+              if (item.href === '/services') isActive = isProjectsActive;
+              if (item.href === '/expertise') isActive = isExpertiseActive;
+              if (item.href === '/contact') isActive = isContactActive;
 
               return (
                  <li key={item.href}>
@@ -86,7 +95,7 @@ export function Header({ onMenuClick, isHomePage = false }: HeaderProps) {
         </nav>
       </div>
       <Button variant="ghost" size="icon" aria-label="Search" className={iconButtonClasses}>
-        <Search className="size-6" />
+        <Search className="size-5" />
       </Button>
     </header>
   );
