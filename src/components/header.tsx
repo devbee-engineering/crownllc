@@ -54,7 +54,7 @@ export function Header({ onMenuClick, isHomePage = false }: HeaderProps) {
         >
           <Menu className="size-6" />
         </Button>
-        <Logo className={isHomePage ? 'border-primary text-primary' : 'border-black text-black'}/>
+        <Logo className={isHomePage ? 'invert brightness-0' : ''}/>
         <nav className="hidden md:flex flex-1 justify-center">
           <ul className={cn("flex gap-12 text-base font-medium", isHomePage ? "text-primary" : "text-black/80")}>
             {navItems.map((item) => {

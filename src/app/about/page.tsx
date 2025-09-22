@@ -99,7 +99,7 @@ export default function AboutPage() {
                 className="object-cover z-0"
             />
             <div className="relative z-10 max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 bg-white/90 backdrop-blur-sm py-16 rounded-md shadow-lg">
-                <h2 className="text-4xl md:text-5xl font-light mb-12 text-center">Crown LLC Does It All And More</h2>
+                <h2 className="text-4xl md:text-5xl font-light mb-12 text-center">Crown Pillars Does It All And More</h2>
                 <ServiceAccordion items={aboutServices} />
             </div>
         </section>

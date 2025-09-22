@@ -30,7 +30,7 @@ export function HamburgerMenu({ isOpen, onClose }: HamburgerMenuProps) {
     >
       <div className="w-full md:w-1/2 h-full bg-white text-black p-4 md:p-8 flex flex-col">
         <div className="flex-shrink-0">
-          <Logo className="border-gray-800 text-gray-800" />
+          <Logo />
         </div>
         <nav className="flex-grow flex items-center">
           <ul>
