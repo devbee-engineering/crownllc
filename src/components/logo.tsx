@@ -8,8 +8,8 @@ export function Logo({ className }: { className?: string }) {
         className
       )}
     >
-      <span className="text-xl font-bold tracking-tighter text-primary">
-        Crown LLc 
+      <span className="text-xl font-bold tracking-tighter text-yellow-500">
+        Crown LLC
       </span>
     </div>
   );

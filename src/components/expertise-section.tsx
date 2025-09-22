@@ -18,7 +18,7 @@ export function ExpertiseSection() {
               <div className="flex-shrink-0">
                 {/* <Logo className="border-gray-800 text-gray-800" /> */}
                 <p className="mt-8 text-sm uppercase tracking-widest text-gray-500">
-                  What we do
+                  Our Core Services Include:
                 </p>
                 <h2
                   id="expertise-heading"
@@ -30,7 +30,7 @@ export function ExpertiseSection() {
               </div>
               <div className="mt-8">
                  <p className="text-base text-gray-600 max-w-[420px]">
-                    Crown LLC as a family have been expert in the construction industry for over 60 years - it&apos;s in our DNA. We&apos;ve expanded beyond construction to design, interiors and furnishings - from concept to completion.
+                    Our Residential Buildings Division focuses on delivering high-quality villa construction, townhouses, and low-rise residential projects tailored to our clients’ unique needs. We handle the entire process — from planning and design coordination to structural works, MEP installations, and premium finishing — ensuring every home we build is beautiful, durable, and compliant with UAE building codes.
                  </p>
               </div>
             </div>

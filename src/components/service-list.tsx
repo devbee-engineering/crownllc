@@ -8,21 +8,21 @@ import {
 const services = [
   {
     value: "item-1",
-    title: "Full Design & Build",
+    title: "Commercial & Industrial Buildings",
     description:
-      "Our comprehensive Design & Build service offers a seamless, integrated approach to your project. From initial concept and architectural design to final construction and finishing touches, we handle every aspect to ensure your vision is realized to the highest standards.",
+      "Our Commercial & Industrial Buildings Division specializes in delivering high-performance spaces that support business operations and drive efficiency. From office buildings and retail outlets to warehouses, factories, and showrooms, we offer complete turnkey solutions that include design coordination, structural works, MEP installations, and interior finishing.We work closely with consultants and business owners to ensure that every facility is functional, compliant with UAE regulations, and optimized for productivity. Whether you need a single warehouse or a full-scale industrial facility, we provide robust, durable, and cost-efficient solutions that meet your business goals.",
   },
   {
     value: "item-2",
-    title: "General Contracting & Construction Management",
+    title: "Renovation & Fit-Out Works",
     description:
-      "With decades of experience, we provide top-tier general contracting and construction management. We oversee all phases of the construction process, ensuring projects are delivered on time, within budget, and with uncompromising quality and safety.",
+      "Interior finishing and upgrades",
   },
   {
     value: "item-3",
-    title: "Interior Design & Furnishing",
+    title: "Project Management",
     description:
-        "Our team of talented interior designers creates spaces that are not only beautiful but also functional. We manage everything from space planning and material selection to procuring and installing custom furnishings, delivering a turnkey solution for your interiors.",
+        "End-to-end coordination for smooth execution.",
   },
 ];
 
