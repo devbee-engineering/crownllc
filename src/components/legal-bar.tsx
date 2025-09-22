@@ -9,9 +9,9 @@ export function LegalBar() {
             Terms & Conditions
           </Link>
           <span className="opacity-50">|</span>
-          <a href="#" className="hover:text-black hover:underline">
+          <Link href="/privacy-policy" className="hover:text-black hover:underline">
             Privacy Policy
-          </a>
+          </Link>
         </div>
       </div>
     );
