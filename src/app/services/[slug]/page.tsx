@@ -38,7 +38,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
-                    <BreadcrumbLink href="/services">SERVICES</BreadcrumbLink>
+                    <BreadcrumbLink href="/services">OUR PROJECTS</BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>

@@ -6,18 +6,27 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const content = [
   {
-    title: "Honest And Honourable People",
+    title: "Who We Are",
     paragraph:
-      "These values are extremly important to us. When we handshake, we’re making a promise – and we stick to it.",
+      "CROWN PILLARS BUILDING CONTRACTING is a fully licensed building contracting company offering complete construction solutions for residential and commercial projects. Our expertise covers design coordination, civil works, structural works, MEP coordination, and finishing works.",
   },
   {
-    title: "Meticulous in the Middle East",
+    title: "Our Mission",
     paragraph:
-      "Crown LLC is the pinnacle of detail, drive and a desire for design. Our innovative techniques continually raise the bar in construction expertise and excellence.",
+      "To deliver quality construction services that exceed client expectations through professionalism, innovation, and reliability.",
   },
   {
-    title: "Building a Better Future",
-    paragraph: "We are committed to sustainable practices that protect our planet for future generations. Our projects are built to last and to inspire."
+    title: "Our Vision",
+    paragraph: "To be recognized as one of the most trusted and innovative contracting companies in the UAE."
+  },
+  {
+    title: "Our Values",
+    paragraph: [
+      "Integrity: Transparent and ethical business practices",
+      "Quality: Attention to detail and superior workmanship",
+      "Safety: Committed to a safe work environment for all",
+      "Timely Delivery: Projects completed as promised"
+    ]
   }
 ];
 
@@ -67,9 +76,17 @@ export function TextBlock() {
             <h3 className="text-3xl font-light text-[#0B0B0B]">
               {currentContent.title}
             </h3>
-            <p className="mt-4 text-base text-gray-600 max-w-[52ch]">
-              {currentContent.paragraph}
-            </p>
+            {Array.isArray(currentContent.paragraph) ? (
+              <ul className="mt-4 text-base text-gray-600 max-w-[52ch] list-disc pl-6">
+                {currentContent.paragraph.map((value: string, idx: number) => (
+                  <li key={idx}>{value}</li>
+                ))}
+              </ul>
+            ) : (
+              <p className="mt-4 text-base text-gray-600 max-w-[52ch]">
+                {currentContent.paragraph}
+              </p>
+            )}
           </motion.div>
         </AnimatePresence>
       </div>

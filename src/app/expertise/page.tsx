@@ -30,12 +30,12 @@ export default function ExpertisePage() {
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
-                  <BreadcrumbPage>EXPERTISE</BreadcrumbPage>
+                  <BreadcrumbPage>SERVICES</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
             <h1 className="mt-4 text-5xl md:text-6xl lg:text-7xl font-light tracking-tight" style={{ lineHeight: 0.95 }}>
-              Expertise
+              Services
             </h1>
           </div>
           <div className="mt-8">
@@ -54,9 +54,9 @@ export default function ExpertisePage() {
 
         <ExpertiseBlock
           index="01"
-          title="Full Design & Build"
-          col1="Clients appreciate the value of our all-inclusive approach that covers design, production, planning, installation and delivery. A fully-integrated service and strong partnerships with principal contractors, developers, and architects place quality and style at the forefront of forward-thinking design."
-          col2="From budgeting and timeline management to architectural and engineering details, we make it happen."
+          title="Residential Building"
+          col1="Our Residential Buildings Division focuses on delivering high-quality villa construction, townhouses, and low-rise residential projects tailored to our clients’ unique needs. We handle the entire process — from planning and design coordination to structural works, MEP installations, and premium finishing — ensuring every home we build is beautiful, durable, and compliant with UAE building codes."
+          col2="Our team works closely with homeowners, architects, and consultants to create custom-designed living spaces that combine functionality, modern aesthetics, and long-term value. Whether it’s a luxury villa or a small residential complex, we prioritize quality workmanship, on-time delivery, and cost-efficient solutions."
         />
 
         <section className="py-12 md:py-20 lg:py-24">
@@ -84,9 +84,9 @@ export default function ExpertisePage() {
 
         <ExpertiseBlock
           index="02"
-          title="General / Contracting & / Construction / Management"
-          col1="DCC has a long and proven track record of successful projects in the Middle East. Our team of experienced professionals provides comprehensive construction management services, ensuring that projects are completed on time, within budget, and to the highest standards of quality."
-          col2="We are committed to building long-term relationships with our clients based on trust, integrity, and mutual respect."
+          title="Commercial & Industrial Buildings "
+          col1="Our Commercial & Industrial Buildings Division specializes in delivering high-performance spaces that support business operations and drive efficiency. From office buildings and retail outlets to warehouses, factories, and showrooms, we offer complete turnkey solutions that include design coordination, structural works, MEP installations, and interior finishing."
+          col2="We work closely with consultants and business owners to ensure that every facility is functional, compliant with UAE regulations, and optimized for productivity. Whether you need a single warehouse or a full-scale industrial facility, we provide robust, durable, and cost-efficient solutions that meet your business goals."
         />
 
         <TwoUpImages

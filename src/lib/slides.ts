@@ -12,7 +12,7 @@ export type SlideContent = ImagePlaceholder & {
 };
 
 const headlines = [
-    "Clients Become Loyalty For Life",
+    "Your Vision, Our Construction ",
     "Building the Future, Restoring the Past",
     "Where Vision Meets Concrete Reality",
 ];
