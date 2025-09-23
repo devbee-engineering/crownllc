@@ -95,7 +95,7 @@ export function Header({ onMenuClick, isHomePage = false }: HeaderProps) {
         </nav>
       </div>
       <Button variant="ghost" size="icon" aria-label="Search" className={iconButtonClasses}>
-        <Search className="size-5" />
+        {/* <Search className="size-5" /> */}
       </Button>
     </header>
   );
