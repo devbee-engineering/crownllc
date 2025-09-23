@@ -6,10 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/logo";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import Image from "next/image";
 
 type HamburgerMenuProps = {
   isOpen: boolean;
   onClose: () => void;
+  className?: string;
 };
 
 const navItems = [
@@ -21,7 +23,7 @@ const navItems = [
     // { href: "/careers", label: "Careers" },
 ];
 
-export function HamburgerMenu({ isOpen, onClose }: HamburgerMenuProps) {
+export function HamburgerMenu({className, isOpen, onClose }: HamburgerMenuProps) {
   return (
     <div
       className={cn(
@@ -30,9 +32,21 @@ export function HamburgerMenu({ isOpen, onClose }: HamburgerMenuProps) {
       )}
     >
       <div className="w-full md:w-1/2 h-full bg-white text-black p-4 md:p-8 flex flex-col">
-        <div className="flex-shrink-0">
-          <Logo />
-        </div>
+        
+          <div
+            className={cn(
+              "relative flex items-start justify-start w-52 h-16 ml-0",
+              className
+            )}
+          >
+            <Image
+              src="/assets/Crown_logo.png"
+              alt="Crown Pillars Logo"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
         <nav className="flex-grow flex items-center">
           <ul>
             {navItems.map((item) => (

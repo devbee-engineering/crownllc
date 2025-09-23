@@ -11,7 +11,7 @@ export function Logo({ className, isScrolled, isHomePage }: { className?: string
       )}
     >
       <Image
-        src={showWhiteLogo ? "/assets/logo-white.png" : "/assets/logo-desktop.png"}
+        src={showWhiteLogo ? "/assets/Crown_Web-Logo_big.png" : "/assets/Crown_Web-Logo_big.png"}
         alt="Crown Pillars Logo"
         fill
         className="object-contain"
