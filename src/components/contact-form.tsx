@@ -5,31 +5,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 type FormData = {
   firstName: string;
   lastName: string;
   email: string;
   phone: string;
-  company: string;
-  subject: string;
   message: string;
-  inquiry: string;
 };
-
-const inquiryTypes = [
-  "General Inquiry",
-  "Project Consultation",
-  "Construction Services",
-  "Renovation Services",
-  "Commercial Projects",
-  "Residential Projects",
-  "Emergency Services",
-  "Career Opportunities",
-  "Partnership Inquiry",
-  "Other"
-];
 
 export function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
@@ -37,16 +20,13 @@ export function ContactForm() {
     lastName: "",
     email: "",
     phone: "",
-    company: "",
-    subject: "",
     message: "",
-    inquiry: ""
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleInputChange = (field: keyof FormData, value: string) => {
+  const handleInputChange = (field: keyof Omit<FormData, "inquiry">, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
@@ -56,23 +36,26 @@ export function ContactForm() {
     setSubmitStatus('idle');
 
     try {
-      // Here you would typically send the form data to your backend API
-      // For now, we'll simulate a successful submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
       
-      console.log('Form submitted:', formData);
       setSubmitStatus('success');
       
-      // Reset form after successful submission
       setFormData({
         firstName: "",
         lastName: "",
         email: "",
         phone: "",
-        company: "",
-        subject: "",
         message: "",
-        inquiry: ""
       });
     } catch (error) {
       console.error('Form submission error:', error);
@@ -149,56 +132,6 @@ export function ContactForm() {
             />
           </div>
         </div>
-
-        {/* Company Field */}
-        {/* <div>
-          <Label htmlFor="company" className="text-sm font-medium text-gray-700">
-            Company/Organization
-          </Label>
-          <Input
-            id="company"
-            type="text"
-            value={formData.company}
-            onChange={(e) => handleInputChange('company', e.target.value)}
-            className="mt-1"
-            placeholder="Your company name"
-          />
-        </div> */}
-
-        {/* Inquiry Type */}
-        {/* <div>
-          <Label htmlFor="inquiry" className="text-sm font-medium text-gray-700">
-            Type of Inquiry *
-          </Label>
-          <Select value={formData.inquiry} onValueChange={(value) => handleInputChange('inquiry', value)}>
-            <SelectTrigger className="mt-1">
-              <SelectValue placeholder="Select the type of inquiry" />
-            </SelectTrigger>
-            <SelectContent>
-              {inquiryTypes.map((type) => (
-                <SelectItem key={type} value={type}>
-                  {type}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div> */}
-
-        {/* Subject */}
-        {/* <div>
-          <Label htmlFor="subject" className="text-sm font-medium text-gray-700">
-            Subject *
-          </Label>
-          <Input
-            id="subject"
-            type="text"
-            value={formData.subject}
-            onChange={(e) => handleInputChange('subject', e.target.value)}
-            required
-            className="mt-1"
-            placeholder="Brief subject of your inquiry"
-          />
-        </div> */}
 
         {/* Message */}
         <div>
