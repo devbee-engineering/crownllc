@@ -40,7 +40,7 @@ export function HamburgerMenu({className, isOpen, onClose }: HamburgerMenuProps)
             )}
           >
             <Image
-              src="/assets/Crown_logo.png"
+              src="/assets/Crown_logo.jpg"
               alt="Crown Pillars Logo"
               fill
               className="object-contain"
