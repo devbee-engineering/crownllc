@@ -7,6 +7,7 @@ import {
     BreadcrumbSeparator,
   } from '@/components/breadcrumb';
 import { LocationsScroller } from '@/components/locations-scroller';
+import { ContactForm } from '@/components/contact-form';
 import { locations } from '@/data/locations';
   
 export default function ContactPage() {
@@ -29,10 +30,16 @@ export default function ContactPage() {
               </h1>
             </div>
           </section>
-  
+
           <section className="py-12 md:py-20 lg:py-24">
             <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
                 <LocationsScroller locations={locations} />
+            </div>
+          </section>
+
+           <section className="py-12 md:py-20 lg:py-24 bg-[#F5F6F6]">
+            <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+              <ContactForm />
             </div>
           </section>
         </main>
