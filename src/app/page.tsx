@@ -9,6 +9,7 @@ import { AboutSection } from "@/components/about-section";
 import { PortfolioIntro } from "@/components/portfolio-intro";
 import { OurProjects } from "@/components/our-projects";
 import { ExpertiseSection } from "@/components/expertise-section";
+import { FloatingContactButton } from "@/components/floating-contact-button";
 
 export default function Home() {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
@@ -47,6 +48,7 @@ export default function Home() {
       <PortfolioIntro />
       <OurProjects />
       <ExpertiseSection />
+      <FloatingContactButton />
     </div>
   );
 }

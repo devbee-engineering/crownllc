@@ -14,6 +14,7 @@ import { ServiceAccordion } from '@/components/service-accordion';
 import { MissionVision } from '@/components/mission-vision';
 import { HistoryTimeline } from '@/components/history-timeline';
 import { SectionEyebrow } from '@/components/section-eyebrow';
+import { WhyChooseUs } from '@/components/why-choose-us';
 
 export default function AboutPage() {
   return (
@@ -61,6 +62,9 @@ export default function AboutPage() {
            </div>
           <TwoColCopy />
         </section>
+
+        {/* Why Choose Us Section */}
+        <WhyChooseUs />
 
         {/* Stats & Milestones Grid Section */}
         <section className="py-12 md:py-20 lg:py-24">

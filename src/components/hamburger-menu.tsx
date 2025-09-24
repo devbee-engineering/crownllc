@@ -32,7 +32,7 @@ export function HamburgerMenu({className, isOpen, onClose }: HamburgerMenuProps)
       )}
     >
       <div className="w-full md:w-1/2 h-full bg-white text-black p-4 md:p-8 flex flex-col">
-        
+        <div className="flex justify-between items-start mb-8">
           <div
             className={cn(
               "relative flex items-start justify-start w-52 h-16 ml-0",
@@ -40,14 +40,24 @@ export function HamburgerMenu({className, isOpen, onClose }: HamburgerMenuProps)
             )}
           >
             <Image
-              src="/assets/Crown_logo.jpg"
+              src="/assets/Crown_Web-Logo_big.jpg"
               alt="Crown Pillars Logo"
               fill
               className="object-contain"
               priority
             />
           </div>
-        <nav className="flex-grow flex items-center">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={onClose}
+            aria-label="Close menu"
+            className="text-gray-500 hover:text-gray-800"
+          >
+            <X className="size-8" />
+          </Button>
+        </div>
+        <nav className="flex-grow">
           <ul>
             {navItems.map((item) => (
               <li key={item.label} className="my-4">
@@ -62,17 +72,6 @@ export function HamburgerMenu({className, isOpen, onClose }: HamburgerMenuProps)
             ))}
           </ul>
         </nav>
-        <div className="flex-shrink-0">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={onClose}
-            aria-label="Close menu"
-            className="text-gray-500 hover:text-gray-800"
-          >
-            <X className="size-8" />
-          </Button>
-        </div>
       </div>
       <div
         className="w-1/2 h-full bg-black/20 hidden md:block"

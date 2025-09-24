@@ -37,21 +37,19 @@ export function Header({ onMenuClick, isHomePage = false }: HeaderProps) {
 
     const headerClasses = cn(
         "sticky top-0 z-50 flex items-center justify-between p-4 md:p-8 transition-colors duration-300",
-        isHomePage && !isScrolled
-            ? "bg-transparent text-white"
-            : "bg-white text-black shadow-md"
+        "bg-white text-black shadow-md"
     );
     
     const navLinkClasses = cn(
         "transition-colors",
-        isHomePage && !isScrolled ? "hover:text-primary/80" : "hover:text-black/70"
+        "hover:text-black/70"
     );
 
-    const activeLinkClasses = isHomePage && !isScrolled ? "text-primary font-semibold" : "text-black font-semibold";
+    const activeLinkClasses = "text-black font-semibold";
     
     const iconButtonClasses = cn(
         "transition-colors",
-        isHomePage && !isScrolled ? "text-primary hover:bg-primary/10" : "text-black hover:bg-black/10"
+        "text-black hover:bg-black/10"
     );
 
   const isProjectsActive = pathname.startsWith('/projects') || pathname === '/our-projects' || pathname.startsWith('/services');
@@ -72,9 +70,9 @@ export function Header({ onMenuClick, isHomePage = false }: HeaderProps) {
         >
           <Menu className="size-6" />
         </Button>
-        <Logo className="hidden md:block" isScrolled={isScrolled} isHomePage={isHomePage} />
+        <Logo className="" isScrolled={isScrolled} isHomePage={isHomePage} />
         <nav className="hidden md:flex flex-1 justify-center">
-          <ul className={cn("flex gap-12 text-sm font-medium tracking-wider", isHomePage && !isScrolled ? "text-primary" : "text-black/80")}>
+          <ul className={cn("flex gap-12 text-sm font-medium tracking-wider", "text-black/80")}>
             {navItems.map((item) => {
               let isActive = pathname === item.href;
               if (item.href === '/') isActive = pathname === '/';
