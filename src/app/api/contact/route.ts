@@ -1,57 +1,73 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
-    const { firstName, lastName, email, phone, message } = body;
+    const { firstName, lastName, email, phone, message } = await request.json();
 
-    // Create a transporter object using SMTP transport.
-    // You need to configure your environment variables for this to work.
+    // Basic validation
+    if (!firstName || !lastName || !email || !message) {
+      return NextResponse.json(
+        { success: false, message: 'Missing required fields.' },
+        { status: 400 }
+      );
+    }
+
+    // Use your SMTP_* variables (match .env)
     const transporter = nodemailer.createTransport({
-      host: process.env.EMAIL_HOST,
-      port: Number(process.env.EMAIL_PORT),
-      secure: Number(process.env.EMAIL_PORT) === 465, // true for 465, false for other ports
+      host: process.env.SMTP_HOST!,
+      port: Number(process.env.SMTP_PORT || 587),
+      secure: Number(process.env.SMTP_PORT) === 465, // true for 465, false otherwise
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        user: process.env.SMTP_USER!,
+        pass: process.env.SMTP_PASS!,
+      },
+    });
+    
+
+    // Optional: verify connection for clearer error messages during dev
+    try {
+      await transporter.verify();
+    } catch (verifyErr) {
+      console.error('SMTP verify failed:', verifyErr);
+      return NextResponse.json(
+        { success: false, message: 'Email transport verification failed.' },
+        { status: 502 }
+      );
+    }
+
+    const html = `
+      <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+        <h2>New Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+        <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+        <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+        <hr>
+        <p><strong>Message:</strong></p>
+        <p style="white-space:pre-wrap;">${(message || '').toString()}</p>
+      </div>
+    `;
+
+    await transporter.sendMail({
+      from: {
+        name: `${firstName} ${lastName} (Website)`,
+        address: process.env.SMTP_FROM!,        // must be verified sender
+      },
+      to: process.env.SMTP_TO!,                 // your inbox
+      replyTo: email,                              // so replying goes to client
+      subject: `New contact form: ${firstName} ${lastName}`,
+      html,
+      headers: {
+        'X-Original-From': email,                  // optional: preserve client email
       },
     });
 
-    // Define email options
-    const mailOptions = {
-      from: process.env.EMAIL_FROM, // Sender address (must be configured in your email service)
-      to: process.env.EMAIL_TO,       // List of receivers
-      subject: `New contact form submission from ${firstName} ${lastName}`,
-      html: `
-        <div style="font-family: Arial, sans-serif; line-height: 1.6;">
-          <h2>New Contact Form Submission</h2>
-          <p><strong>Name:</strong> ${firstName} ${lastName}</p>
-          <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-          <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
-          <hr>
-          <p><strong>Message:</strong></p>
-          <p>${message.replace(/\n/g, '<br>')}</p>
-        </div>
-      `,
-    };
-
-    // Send the email
-    await transporter.sendMail(mailOptions);
-
-    console.log("Contact form email sent successfully.");
-
     return NextResponse.json({ success: true, message: 'Message sent successfully.' });
-
   } catch (error) {
     console.error('Error handling contact form submission:', error);
-    // It's good practice to not expose detailed error messages to the client.
     return NextResponse.json(
-        { success: false, message: 'An internal server error occurred.' },
-        { status: 500 }
+      { success: false, message: 'An internal server error occurred.' },
+      { status: 500 }
     );
   }
 }
