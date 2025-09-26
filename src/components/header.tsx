@@ -19,7 +19,7 @@ const navItems = [
   { href: "/about", label: "ABOUT US" },
   { href: "/expertise", label: "SERVICES" },
   { href: "/our-projects", label: "OUR PROJECTS" },
-  { href: "/gallery", label: "GALLERY" },
+  { href: "/gallery", label: "OUR WORKS" },
   { href: "/contact", label: "CONTACT" },
 ];
 
