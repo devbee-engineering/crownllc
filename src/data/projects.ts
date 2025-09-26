@@ -1,3 +1,4 @@
+
 export type Project = {
     slug: string;
     title: string;
@@ -76,7 +77,10 @@ export const projects: Project[] = [
             architect: "Skidmore, Owings & Merrill (SOM)",
             scope: ["General Contracting", "Construction Management"],
         },
-        gallery: [],
+        gallery: [
+            { src: "/assets/images/header_courosel-2.png", alt: "Exterior of Rolex Tower" },
+            { src: "/assets/expertise/expertise_image-4.png", alt: "High-rise tower at dusk with warm interior lighting"},
+        ],
         next: {
             title: "Capricorn Tower",
             slug: "capricorn-tower",
@@ -102,6 +106,9 @@ export const projects: Project[] = [
             architect: "Internal Design Team",
             scope: ["Full Design & Build"],
         },
-        gallery: [],
+        gallery: [
+             { src: "/assets/images/header_courosel-9.png", alt: "Exterior of Seddiqi Holding HQ" },
+             { src: "/assets/about/about-img-2.png", alt: "Seddiqi Holding HQ facade at dusk" },
+        ],
     },
 ];

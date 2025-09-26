@@ -18,7 +18,8 @@ const navItems = [
   { href: "/", label: "HOME" },
   { href: "/about", label: "ABOUT US" },
   { href: "/expertise", label: "SERVICES" },
-  { href: "/services", label: "OUR PROJECTS" },
+  { href: "/our-projects", label: "OUR PROJECTS" },
+  { href: "/gallery", label: "GALLERY" },
   { href: "/contact", label: "CONTACT" },
 ];
 
@@ -56,6 +57,7 @@ export function Header({ onMenuClick, isHomePage = false }: HeaderProps) {
   const isExpertiseActive = pathname.startsWith('/expertise');
   const isContactActive = pathname.startsWith('/contact');
   const isAboutActive = pathname.startsWith('/about');
+  const isGalleryActive = pathname.startsWith('/gallery');
 
 
   return (
@@ -77,8 +79,9 @@ export function Header({ onMenuClick, isHomePage = false }: HeaderProps) {
               let isActive = pathname === item.href;
               if (item.href === '/') isActive = pathname === '/';
               if (item.href === '/about') isActive = isAboutActive;
-              if (item.href === '/services') isActive = isProjectsActive;
+              if (item.href === '/our-projects') isActive = isProjectsActive;
               if (item.href === '/expertise') isActive = isExpertiseActive;
+              if (item.href === '/gallery') isActive = isGalleryActive;
               if (item.href === '/contact') isActive = isContactActive;
 
               return (
