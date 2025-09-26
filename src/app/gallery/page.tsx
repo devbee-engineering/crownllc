@@ -8,13 +8,9 @@ import {
     BreadcrumbLink,
 } from '@/components/breadcrumb';
 import { GalleryGrid } from '@/components/gallery-grid';
-import { projects } from '@/data/projects';
+import { galleryImages } from '@/data/gallery';
 
 export default function GalleryPage() {
-  const galleryImages = projects.flatMap(p => 
-    p.gallery.map(g => ({ ...g, title: p.title, category: p.category }))
-  ).filter(image => image.src); // Filter out any items without a src
-
   return (
     <div className="bg-white text-[#0B0B0B]">
       <main>
