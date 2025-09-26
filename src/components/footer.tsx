@@ -26,8 +26,9 @@ export function Footer() {
                 Location
               </h3>
               <address className="not-italic text-black/80 leading-relaxed">
-                  <p>office no 303, Makateb Building</p>
-                  <p>maktoum road, Deira - Dubai, UAE</p>
+                  <p>Office no 302, Makateb Building</p>
+                  <p>Maktoum road,</p>
+                  <p>Deira - Dubai, UAE</p>
               </address>
             </div>
             <div>

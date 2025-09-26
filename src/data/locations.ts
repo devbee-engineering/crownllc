@@ -12,7 +12,7 @@ export type Location = {
 export const locations: Location[] = [
     {
       title: "UAE - Dubai",
-      addressLines: ["office no 302, Makateb Building, maktoum road, Deira - Dubai, UAE"],
+      addressLines: ["Office no 302, Makateb Building, Maktoum road, Deira - Dubai, UAE"],
       pobox: "PO Box 232, Dubai",
       country: "United Arab Emirates",
       phone: "+971 (0)4 333 7100",
@@ -21,7 +21,7 @@ export const locations: Location[] = [
     },
     {
       title: "UAE - Dubai",
-      addressLines: ["office no 302, Makateb Building, maktoum road, Deira - Dubai, UAE"],
+      addressLines: ["Office no 302, Makateb Building, Maktoum road, Deira - Dubai, UAE"],
       pobox: "PO Box 232, Dubai",
       country: "United Arab Emirates",
       phone: "+971 (0)2 626 7930",
@@ -30,7 +30,7 @@ export const locations: Location[] = [
     },
     {
       title: "UAE - Dubai",
-      addressLines: ["office no 302, Makateb Building, maktoum road, Deira - Dubai, UAE"],
+      addressLines: ["Office no 302, Makateb Building, Maktoum road, Deira - Dubai, UAE"],
       pobox: "PO Box 232, Dubai",
       country: "United Arab Emirates",
       phone: "+966 (0)11 200 8267",
