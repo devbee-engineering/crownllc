@@ -34,6 +34,9 @@ export default function GalleryPage() {
                 <h1 className="mt-4 text-5xl md:text-6xl lg:text-7xl font-light tracking-tight" style={{ lineHeight: 0.95 }}>
                     Gallery
                 </h1>
+                <p className="mt-4 text-lg text-gray-600 max-w-2xl">
+                    A selection of our finest work, from ongoing projects to completed landmarks.
+                </p>
             </div>
         </section>
         <section className="py-12 md:py-20 lg:py-24">
