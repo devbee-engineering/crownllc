@@ -29,8 +29,8 @@ export function OurProjects() {
     <section className="bg-white py-12 md:py-16 lg:py-24">
       <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
-            <FeaturedProjectCard key={project.title} project={project} />
+          {projects.map((project, index) => (
+            <FeaturedProjectCard key={`${project.imageUrl}-${index}`} project={project} />
           ))}
         </div>
       </div>
