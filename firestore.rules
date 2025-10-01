@@ -1,0 +1,46 @@
+/**
+ * @file Firestore Security Rules
+ * @description This ruleset defines access control for the Firestore database based on the principle of data isolation and public readability for static content.
+ *
+ * Data Structure:
+ * - /contactSubmissions/{contactSubmissionId}: Stores contact form submissions.  Write operations are time-limited. Read, update, and delete are disallowed.
+ * - /locations/{locationId}: Stores static location data; publicly readable. Write access is denied.
+ *
+ * Key Security Decisions:
+ * - Contact submissions are append-only and time-limited.
+ * - Location data is public.
+ */
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * @description Controls access to contact form submissions. Allows creation with time limit and specific keys. Read, update, and delete are denied.
+     * @path /contactSubmissions/{contactSubmissionId}
+     * @allow (create) Any user can create a contact submission before 2100 if the request contains the required fields.
+     * @deny (read) No one can read contact submissions directly.
+     * @deny (update) No one can update contact submissions.
+     * @deny (delete) No one can delete contact submissions.
+     * @principle Time-limited append-only access for contact submissions.
+     */
+    match /contactSubmissions/{contactSubmissionId} {
+      allow create: if request.time < timestamp.date(2100,1,1)
+                    && request.resource.data.keys().hasAll(['fullName','inquiryType','mobile','email','message','captchaOK','consent','createdAt']);
+      allow get, list, update, delete: if false;
+    }
+
+    /**
+     * @description Controls access to location data. Allows public read access. Denies write access.
+     * @path /locations/{locationId}
+     * @allow (get, list) Any user (authenticated or not) can read location data.
+     * @deny (create) No one can create location data via client.
+     * @deny (update) No one can update location data via client.
+     * @deny (delete) No one can delete location data via client.
+     * @principle Public read access for static location data.
+     */
+    match /locations/{locationId} {
+      allow get, list: if true;
+      allow create, update, delete: if false;
+    }
+  }
+}

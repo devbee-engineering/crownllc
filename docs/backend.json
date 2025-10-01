@@ -1,0 +1,149 @@
+{
+  "entities": {
+    "ContactSubmission": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ContactSubmission",
+      "type": "object",
+      "description": "Represents a contact form submission from the website.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the contact submission."
+        },
+        "fullName": {
+          "type": "string",
+          "description": "The full name of the person submitting the contact form."
+        },
+        "inquiryType": {
+          "type": "string",
+          "description": "The type of inquiry selected by the user (e.g., Sales, Sourcing)."
+        },
+        "mobile": {
+          "type": "string",
+          "description": "The mobile phone number of the person submitting the form."
+        },
+        "email": {
+          "type": "string",
+          "description": "The email address of the person submitting the form.",
+          "format": "email"
+        },
+        "message": {
+          "type": "string",
+          "description": "The message entered by the user in the contact form."
+        },
+        "captchaOK": {
+          "type": "boolean",
+          "description": "Indicates whether the captcha was solved correctly."
+        },
+        "consent": {
+          "type": "boolean",
+          "description": "Indicates whether the user agreed to be contacted and accepts the Privacy Policy."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the contact submission was created.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "fullName",
+        "inquiryType",
+        "mobile",
+        "email",
+        "message",
+        "captchaOK",
+        "consent",
+        "createdAt"
+      ]
+    },
+    "Location": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Location",
+      "type": "object",
+      "description": "Represents a physical location of the company.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the location."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the location (e.g., UAE – Abu Dhabi)."
+        },
+        "address": {
+          "type": "string",
+          "description": "The street address of the location."
+        },
+        "poBox": {
+          "type": "string",
+          "description": "The PO Box of the location."
+        },
+        "phone": {
+          "type": "string",
+          "description": "The phone number of the location."
+        },
+        "email": {
+          "type": "string",
+          "description": "The email address of the location.",
+          "format": "email"
+        },
+        "image": {
+          "type": "string",
+          "description": "Reference to the image file name."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "address",
+        "phone",
+        "email",
+        "image"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/contactSubmissions/{contactSubmissionId}",
+        "definition": {
+          "entityName": "ContactSubmission",
+          "schema": {
+            "$ref": "#/backend/entities/ContactSubmission"
+          },
+          "description": "Stores contact form submissions from the website.  Create access is time-limited. Includes fields for name, inquiry type, mobile, email, message, captcha verification, consent, and timestamp.",
+          "params": [
+            {
+              "name": "contactSubmissionId",
+              "description": "Unique identifier for the contact submission."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/locations/{locationId}",
+        "definition": {
+          "entityName": "Location",
+          "schema": {
+            "$ref": "#/backend/entities/Location"
+          },
+          "description": "Stores location data of the company offices.  Includes fields for location name, address, phone, email and image.",
+          "params": [
+            {
+              "name": "locationId",
+              "description": "Unique identifier for the location."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore structure is designed to store contact form submissions and location data. `contactSubmissions` collection stores the contact form submissions. The security rules allow creation of documents in the `contactSubmissions` collection with the specified fields and restrict read, update, and delete operations. The `locations` collection stores static location data, which is publicly readable.\n\nThis structure promotes authorization independence as there are no dependencies between documents or collections that require the use of `get()` calls in security rules. Each collection is treated independently. Read operations on `locations` are open, supporting the 'QAPs' (Rules Are Not Filters) principle. The structure also facilitates the integrity of the contact submissions with a timestamp (`createdAt`)."
+  }
+}
