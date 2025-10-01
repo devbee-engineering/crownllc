@@ -18,7 +18,7 @@ export type Project = {
 export const projects: Project[] = [
     {
         slug: "capricorn-tower",
-        title: "Capricorn Tower",
+        title: "",
         category: "Mixed-use",
         hero: "/assets/services/services_image-1.png",
         intro: {
@@ -32,7 +32,7 @@ export const projects: Project[] = [
             floors: "B+G+47",
         },
         specs: {
-            location: "Dubai – Sheikh Zayed Road",
+            location: "",
             type: "Mixed-use",
             project: "Capricorn Tower",
             details: "A 46-story mixed-use tower featuring residential apartments, office spaces, and retail outlets, with a distinctive architectural design.",
@@ -60,7 +60,7 @@ export const projects: Project[] = [
     },
     {
         slug: "rolex-tower",
-        title: "Rolex Tower",
+        title: "",
         category: "Mixed-use",
         hero: "/assets/images/header_courosel-2.png",
         intro: {
@@ -89,7 +89,7 @@ export const projects: Project[] = [
     },
     {
         slug: "seddiqi-holding-hq",
-        title: "Seddiqi Holding HQ",
+        title: "",
         category: "Offices",
         hero: "/assets/images/header_courosel-9.png",
         intro: {

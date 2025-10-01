@@ -6,9 +6,9 @@ import { FeaturedProjectCard } from "@/components/featured-project-card";
 import data from "@/lib/placeholder-images.json";
 
 const featuredProject = {
-  title: "Rolex Tower",
+  title: "Makteb Building",
   category: "Mixed-use",
-  location: "Dubai - Sheikh Zayed Road",
+  location: "",
   imageUrl: "/assets/images/header_courosel-2.png",
   imageHint: "city skyscraper",
 };
