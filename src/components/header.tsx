@@ -1,103 +1,112 @@
 
-"use client";
-
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Menu, Search } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Logo } from "@/components/logo";
-import { cn } from "@/lib/utils";
-import { useEffect, useState } from "react";
+'use client';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { Menu, ChevronDown } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Logo } from '@/components/logo';
+import { cn } from '@/lib/utils';
+import { useState, useEffect } from 'react';
+import * as Popover from '@radix-ui/react-popover';
 
 type HeaderProps = {
   onMenuClick: () => void;
-  isHomePage?: boolean;
 };
 
-const navItems = [
-  { href: "/", label: "HOME" },
-  { href: "/about", label: "ABOUT US" },
-  { href: "/expertise", label: "SERVICES" },
-  { href: "/our-projects", label: "OUR PROJECTS" },
-  { href: "/gallery", label: "OUR WORKS" },
-  { href: "/contact", label: "CONTACT" },
+const leftNav = [
+  { href: '/about', label: 'ABOUT US' },
+  { 
+    label: 'PRODUCTS',
+    subItems: [
+      { href: '#', label: 'Pulses & Beans' },
+      { href: '#', label: 'Staples' },
+      { href: '#', label: 'Coffee Beans' },
+      { href: '#', label: 'Nuts & Dry Fruits' },
+      { href: '#', label: 'Seeds' },
+      { href: '#', label: 'Spices' },
+      { href: '#', label: 'Fruits & Vegetables' },
+      { href: '#', label: 'Other Commodities' },
+    ]
+  },
+  { href: '/services', label: 'SERVICES' },
 ];
 
+const rightNav = [{ href: '/contact', label: 'CONTACT US' }];
 
-export function Header({ onMenuClick, isHomePage = false }: HeaderProps) {
-    const pathname = usePathname();
-    const [isScrolled, setIsScrolled] = useState(false);
+export function Header({ onMenuClick }: HeaderProps) {
+  const pathname = usePathname();
+  const [isScrolled, setIsScrolled] = useState(false);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 0);
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-    const headerClasses = cn(
-        "sticky top-0 z-50 flex items-center justify-between p-4 md:p-8 transition-colors duration-300",
-        "bg-white text-black shadow-md"
-    );
-    
-    const navLinkClasses = cn(
-        "transition-colors",
-        "hover:text-black/70"
-    );
-
-    const activeLinkClasses = "text-black font-semibold";
-    
-    const iconButtonClasses = cn(
-        "transition-colors",
-        "text-black hover:bg-black/10"
-    );
-
-  const isProjectsActive = pathname.startsWith('/projects') || pathname === '/our-projects' || pathname.startsWith('/services');
-  const isExpertiseActive = pathname.startsWith('/expertise');
-  const isContactActive = pathname.startsWith('/contact');
-  const isAboutActive = pathname.startsWith('/about');
-  const isGalleryActive = pathname.startsWith('/gallery');
-
+  const headerClasses = cn(
+    "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+    isScrolled ? "bg-white/95 shadow-md backdrop-blur-sm" : "bg-transparent"
+  );
+  
+  const navLinkClasses = cn(
+      "text-sm font-medium tracking-wider transition-colors",
+      isScrolled ? "text-ink hover:text-brand" : "text-white hover:text-white/80"
+  );
 
   return (
     <header className={headerClasses}>
-      <div className="flex items-center gap-4 flex-1">
-        <Button
-          variant="ghost"
-          size="icon"
-          aria-label="Menu"
-          onClick={onMenuClick}
-          className={cn("md:hidden", iconButtonClasses)}
-        >
-          <Menu className="size-6" />
-        </Button>
-        <Logo className="" isScrolled={isScrolled} isHomePage={isHomePage} />
-        <nav className="hidden md:flex flex-1 justify-center">
-          <ul className={cn("flex gap-12 text-sm font-medium tracking-wider", "text-black/80")}>
-            {navItems.map((item) => {
-              let isActive = pathname === item.href;
-              if (item.href === '/') isActive = pathname === '/';
-              if (item.href === '/about') isActive = isAboutActive;
-              if (item.href === '/our-projects') isActive = isProjectsActive;
-              if (item.href === '/expertise') isActive = isExpertiseActive;
-              if (item.href === '/gallery') isActive = isGalleryActive;
-              if (item.href === '/contact') isActive = isContactActive;
+      <div className="max-w-[1240px] mx-auto px-6 lg:px-8 flex items-center justify-between h-20">
+        <div className="lg:hidden">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={onMenuClick}
+            className={cn(navLinkClasses, "hover:bg-black/10")}
+          >
+            <Menu className="h-6 w-6" />
+          </Button>
+        </div>
 
-              return (
-                 <li key={item.href}>
-                    <Link href={item.href} className={cn(navLinkClasses, isActive && activeLinkClasses)}>
-                        {item.label}
+        <nav className="hidden lg:flex items-center gap-8">
+          {leftNav.map(item => (
+            item.subItems ? (
+              <Popover.Root key={item.label}>
+                <Popover.Trigger className={cn(navLinkClasses, 'flex items-center gap-1 group outline-none')}>
+                  {item.label}
+                  <ChevronDown className="h-4 w-4 transition-transform duration-200 group-data-[state=open]:-rotate-180" />
+                </Popover.Trigger>
+                <Popover.Content sideOffset={20} align="start" className="w-56 bg-white p-2 rounded-md shadow-lg border border-line">
+                  {item.subItems.map(sub => (
+                    <Link key={sub.label} href={sub.href} className="block px-4 py-2 text-sm text-ink hover:bg-gray-100 rounded">
+                      {sub.label}
                     </Link>
-                </li>
-              )
-            })}
-          </ul>
+                  ))}
+                </Popover.Content>
+              </Popover.Root>
+            ) : (
+              <Link key={item.label} href={item.href!} className={navLinkClasses}>
+                {item.label}
+              </Link>
+            )
+          ))}
         </nav>
+
+        <div className="absolute left-1/2 -translate-x-1/2">
+          <Link href="/">
+            <Logo className={cn("w-36 h-auto transition-colors", isScrolled ? 'text-ink' : 'text-white')} />
+          </Link>
+        </div>
+
+        <nav className="hidden lg:flex items-center gap-8">
+          {rightNav.map(item => (
+             <Link key={item.label} href={item.href} className={navLinkClasses}>
+               {item.label}
+             </Link>
+          ))}
+        </nav>
+
+        <div className="lg:hidden w-8" />
       </div>
-      <Button variant="ghost" size="icon" aria-label="Search" className={iconButtonClasses}>
-        {/* <Search className="size-5" /> */}
-      </Button>
     </header>
   );
 }

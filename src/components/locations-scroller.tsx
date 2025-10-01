@@ -1,11 +1,9 @@
 
-"use client";
-
-import React, { useRef, useState, useCallback } from 'react';
+'use client';
+import React, { useRef } from 'react';
+import Image from 'next/image';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import type { Location } from '@/data/locations';
-import { LocationCard } from './location-card';
-import { cn } from '@/lib/utils';
 
 type LocationsScrollerProps = {
   locations: Location[];
@@ -13,87 +11,52 @@ type LocationsScrollerProps = {
 
 export function LocationsScroller({ locations }: LocationsScrollerProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
-
-  const checkScrollability = useCallback(() => {
-    const el = scrollContainerRef.current;
-    if (el) {
-      setCanScrollLeft(el.scrollLeft > 0);
-      setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 1);
-    }
-  }, []);
 
   const scroll = (direction: 'left' | 'right') => {
-    const el = scrollContainerRef.current;
-    if (el) {
-      const scrollAmount = el.clientWidth * 0.8; // Scroll by 80% of the container width
-      el.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth',
-      });
+    const container = scrollContainerRef.current;
+    if (container) {
+      const scrollAmount = container.clientWidth / 2; // Adjust for 2 cards view
+      container.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
     }
   };
-  
-  React.useEffect(() => {
-    const el = scrollContainerRef.current;
-    if (el) {
-      el.addEventListener('scroll', checkScrollability);
-      window.addEventListener('resize', checkScrollability);
-      checkScrollability(); // Initial check
-      return () => {
-        el.removeEventListener('scroll', checkScrollability);
-        window.removeEventListener('resize', checkScrollability);
-      };
-    }
-  }, [checkScrollability]);
-
 
   return (
-    <div>
-        <div className="flex justify-between items-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-light">Our Locations</h2>
-            <div className="flex items-center gap-4">
-                <button 
-                    onClick={() => scroll('left')} 
-                    aria-label="Scroll left" 
-                    disabled={!canScrollLeft}
-                    className={cn(
-                        "text-black/40 hover:text-black transition-colors",
-                        !canScrollLeft && "opacity-50 cursor-not-allowed"
-                    )}
-                >
-                    <ArrowLeft />
-                </button>
-                <div className="w-8 h-px bg-black/20"></div>
-                <button 
-                    onClick={() => scroll('right')} 
-                    aria-label="Scroll right" 
-                    disabled={!canScrollRight}
-                    className={cn(
-                        "text-black/40 hover:text-black transition-colors",
-                        !canScrollRight && "opacity-50 cursor-not-allowed"
-                    )}
-                >
-                    <ArrowRight />
-                </button>
-            </div>
-        </div>
+    <div className="relative">
+      <div className="absolute -top-12 right-1/2 translate-x-1/2 flex items-center gap-2">
+        <button onClick={() => scroll('left')} aria-label="Previous Location" className="p-2 rounded-full border border-line hover:bg-gray-100 transition-colors">
+          <ArrowLeft className="h-5 w-5" />
+        </button>
+        <button onClick={() => scroll('right')} aria-label="Next Location" className="p-2 rounded-full border border-line hover:bg-gray-100 transition-colors">
+          <ArrowRight className="h-5 w-5" />
+        </button>
+      </div>
 
-        <div
-            ref={scrollContainerRef}
-            className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth pb-6 -mb-6"
-            style={{ scrollbarWidth: 'none', '-ms-overflow-style': 'none' }}
-        >
-            {locations.map((location, index) => (
-            <div
-                key={index}
-                className="flex-shrink-0 w-full md:w-1/2 snap-center px-4 first:pl-0 last:pr-0"
-            >
-                <LocationCard location={location} />
+      <div
+        ref={scrollContainerRef}
+        className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth -mx-3"
+        style={{ scrollbarWidth: 'none', '-ms-overflow-style': 'none' }}
+      >
+        {[...locations, ...locations].map((location, index) => ( // Duplicate for looping effect
+          <div key={index} className="flex-shrink-0 w-full md:w-1/2 snap-center px-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-6 bg-white p-6 rounded-2xl shadow-sm border border-line">
+              <div className={`relative aspect-square w-full ${index % 2 === 0 ? 'md:order-last' : ''}`}>
+                <Image src={location.image} alt={location.title} fill className="object-cover rounded-lg" />
+              </div>
+              <div className="space-y-4">
+                <h3 className="font-display text-2xl">{location.title}</h3>
+                <p className="text-sm text-muted-foreground">{location.address}</p>
+                <p className="text-sm text-muted-foreground">PO Box: {location.pobox}</p>
+                <p className="text-sm text-muted-foreground">
+                  Phone: <a href={`tel:${location.phone.replace(/\s/g, '')}`} className="hover:text-brand">{location.phone}</a>
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  Email: <a href={`mailto:${location.email}`} className="hover:text-brand">{location.email}</a>
+                </p>
+              </div>
             </div>
-            ))}
-        </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

@@ -1,12 +1,12 @@
 
-"use client";
+'use client';
 
-import { X } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Logo } from "@/components/logo";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
-import Image from "next/image";
+import { X, ChevronDown } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Logo } from '@/components/logo';
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
+import * as Collapsible from '@radix-ui/react-collapsible';
 
 type HamburgerMenuProps = {
   isOpen: boolean;
@@ -15,67 +15,80 @@ type HamburgerMenuProps = {
 };
 
 const navItems = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About us" },
-    { href: "/expertise", label: "Services" },
-    { href: "/our-projects", label: "Our Projects" },
-    { href: "/gallery", label: "Our Works" },
-    { href: "/contact", label: "Contact" },
-    // { href: "/careers", label: "Careers" },
+    { href: "/about", label: "ABOUT US" },
+    { 
+      label: "PRODUCTS", 
+      subItems: [
+        { href: "#", label: "Pulses & Beans" },
+        { href: "#", label: "Staples" },
+        { href: "#", label: "Coffee Beans" },
+        { href: "#", label: "Nuts & Dry Fruits" },
+        { href: "#", label: "Seeds" },
+        { href: "#", label: "Spices" },
+        { href: "#", label: "Fruits & Vegetables" },
+        { href: "#", label: "Other Commodities" },
+      ]
+    },
+    { href: "/services", label: "SERVICES" },
+    { href: "/contact", label: "CONTACT US" },
 ];
 
-export function HamburgerMenu({className, isOpen, onClose }: HamburgerMenuProps) {
+export function HamburgerMenu({ className, isOpen, onClose }: HamburgerMenuProps) {
   return (
     <div
       className={cn(
-        "fixed inset-0 z-50 flex transition-transform duration-500 ease-in-out",
+        "fixed inset-0 z-50 flex transition-transform duration-300 ease-in-out",
         isOpen ? "translate-x-0" : "-translate-x-full"
       )}
     >
-      <div className="w-full md:w-1/2 h-full bg-white text-black p-4 md:p-8 flex flex-col">
-        <div className="flex justify-between items-start mb-8">
-          <div
-            className={cn(
-              "relative flex items-start justify-start w-52 h-16 ml-0",
-              className
-            )}
-          >
-            <Image
-              src="/assets/Crown_Web-Logo_big.jpg"
-              alt="Crown Pillars Logo"
-              fill
-              className="object-contain"
-              priority
-            />
-          </div>
+      <div className="w-full sm:w-80 h-full bg-white text-ink p-6 flex flex-col">
+        <div className="flex justify-between items-center mb-8">
+          <Link href="/" onClick={onClose}>
+            <Logo className="w-32" />
+          </Link>
           <Button
             variant="ghost"
             size="icon"
             onClick={onClose}
             aria-label="Close menu"
-            className="text-gray-500 hover:text-gray-800"
           >
-            <X className="size-8" />
+            <X className="size-6" />
           </Button>
         </div>
         <nav className="flex-grow">
-          <ul>
+          <ul className="space-y-2">
             {navItems.map((item) => (
-              <li key={item.label} className="my-4">
-                <Link
-                  href={item.href}
-                  className="text-4xl text-gray-400 hover:text-gray-800 transition-colors"
-                  onClick={onClose}
-                >
-                  {item.label}
-                </Link>
+              <li key={item.label}>
+                {item.subItems ? (
+                   <Collapsible.Root>
+                    <Collapsible.Trigger className="w-full flex justify-between items-center text-lg py-2 font-medium text-left">
+                      {item.label}
+                      <ChevronDown className="h-5 w-5 transition-transform duration-300 group-data-[state=open]:-rotate-180" />
+                    </Collapsible.Trigger>
+                    <Collapsible.Content>
+                      <ul className="pl-4 pt-2 space-y-2">
+                        {item.subItems.map(subItem => (
+                           <li key={subItem.label}>
+                            <Link href={subItem.href} onClick={onClose} className="block py-1 text-muted-foreground hover:text-brand">
+                              {subItem.label}
+                            </Link>
+                           </li>
+                        ))}
+                      </ul>
+                    </Collapsible.Content>
+                   </Collapsible.Root>
+                ) : (
+                  <Link href={item.href!} onClick={onClose} className="block text-lg py-2 font-medium hover:text-brand">
+                    {item.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
         </nav>
       </div>
       <div
-        className="w-1/2 h-full bg-black/20 hidden md:block"
+        className="flex-grow h-full bg-black/30"
         onClick={onClose}
       />
     </div>

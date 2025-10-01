@@ -1,9 +1,8 @@
 
 export type Location = {
     title: string;
-    addressLines: string[];
+    address: string;
     pobox: string;
-    country: string;
     phone: string;
     email: string;
     image: string;
@@ -11,30 +10,19 @@ export type Location = {
   
 export const locations: Location[] = [
     {
-      title: "UAE - Dubai",
-      addressLines: ["Office no 302, Makateb Building, Maktoum road, Deira - Dubai, UAE"],
-      pobox: "PO Box 232, Dubai",
-      country: "United Arab Emirates",
-      phone: "+971 (0)4 333 7100",
-      email: "info@crownpillars.com",
-      image: "/assets/contact/contact_image-1.png",
-    },
-    {
-      title: "UAE - Dubai",
-      addressLines: ["Office no 302, Makateb Building, Maktoum road, Deira - Dubai, UAE"],
-      pobox: "PO Box 232, Dubai",
-      country: "United Arab Emirates",
+      title: "UAE – Abu Dhabi",
+      address: "Office 201, Al Waratha Building, Block 3, Khaleefa St",
+      pobox: "324, Abu Dhabi — United Arab Emirates",
       phone: "+971 (0)2 626 7930",
-      email: "info@crownpillars.com",
-      image: "/assets/contact/contact_image-1.png",
+      email: "dccauh@dcc-group.com",
+      image: "/assets/locations/abu-dhabi.jpg",
     },
     {
-      title: "UAE - Dubai",
-      addressLines: ["Office no 302, Makateb Building, Maktoum road, Deira - Dubai, UAE"],
-      pobox: "PO Box 232, Dubai",
-      country: "United Arab Emirates",
+      title: "KSA – Riyadh",
+      address: "Tatweer Towers, Tower No 1, Ground Floor, King Fahad Rd",
+      pobox: "25232, Riyadh 11466 — Kingdom of Saudi Arabia",
       phone: "+966 (0)11 200 8267",
-      email: "info@crownpillars.com",
-      image: "/assets/contact/contact_image-1.png",
+      email: "dccksa@dcc-group.com",
+      image: "/assets/locations/riyadh.jpg",
     },
 ];

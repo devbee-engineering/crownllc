@@ -1,22 +1,17 @@
-import { cn } from "@/lib/utils";
-import Image from "next/image";
 
-export function Logo({ className, isScrolled, isHomePage }: { className?: string; isScrolled?: boolean; isHomePage?: boolean; }) {
-  const showWhiteLogo = isHomePage && !isScrolled;
+import { cn } from "@/lib/utils";
+
+export function Logo({ className }: { className?: string }) {
   return (
-    <div
-      className={cn(
-        "relative flex items-center justify-center w-72 h-16",
-        className
-      )}
+    <svg
+      viewBox="0 0 248 50"
+      xmlns="http://www.w3.org/2000/svg"
+      className={cn("fill-current", className)}
+      alt="EMCO International"
     >
-      <Image
-        src={showWhiteLogo ? "/assets/Crown_Web-Logo_big.png" : "/assets/Crown_Web-Logo_big.png"}
-        alt="Crown Pillars Logo"
-        fill
-        className="object-contain"
-        priority
-      />
-    </div>
+      <path d="M12.39.99A12.27 12.27 0 00.12 13.26v23.48c0 7.3 5.5 13.26 12.27 13.26h23.48c7.3 0 13.26-5.5 13.26-12.27V13.26C49.13 5.96 43.17.99 35.87.99H12.39zm22.42 45.47H12.4c-5.48 0-9.93-4.45-9.93-9.93V13.25c0-5.48 4.45-9.93 9.93-9.93h22.42c5.48 0 9.93 4.45 9.93 9.93v23.3c-.52 5-4.97 9.45-9.94 9.45z"></path>
+      <path d="M14.8 19.33V15.9h18.8v3.43h-7.6v11.52h-3.5V19.33h-7.7z"></path>
+      <path d="M60.14 40.06V10.1h15.9c4.35 0 7.23 1.13 8.64 3.4s2.12 5.5 2.12 9.68-1.06 7.42-2.12 9.68-4.3 3.4-8.65 3.4h-15.9zm3.5-3.1h12.57c2.65 0 4.5-.7 5.55-2.1s1.58-3.5 1.58-6.4-1.06-5.18-1.58-6.4-2.9-2.1-5.55-2.1H63.64v17zM92.11 40.06l-2.65-6.04h-12.1l-2.65 6.04h-3.8l10.5-29.9h3.8l10.5 29.9h-3.6zm-10.4-8.9h8.22l-4.1-9.9-4.12 9.9zM120.9 40.06l-2.65-6.04H106.1l-2.65 6.04h-3.8l10.5-29.9h3.8l10.5 29.9h-3.6zm-10.4-8.9h8.22l-4.1-9.9-4.12 9.9zM153.2 40.06h-3.5V10.1h3.5v29.96zM161.43 40.06V10.1h3.5v26.86h11.9v3.1h-15.4zM186.32 40.06l-6.2-9.1-6.38 9.1h-4.4l8.5-11.8-8.1-11.8h4.4l5.9 8.7 5.9-8.7h4.4l-8.1 11.8 8.5 11.8h-4.5zM212.8 40.06v-29.9h12.8c4.05 0 6.6 1.05 7.64 3.1s1.56 5.1 1.56 9.1-.53 7-1.56 9.1-3.6 3.1-7.65 3.1h-9.3v5.5h-3.5zm3.5-8.6h9.1c2.4 0 4-.6 4.9-1.8s1.3-3.1 1.3-5.7-1-4.5-1.3-5.7-2.5-1.8-4.9-1.8h-9.1v15zM247.9 40.06h-3.5V13.2h-11.9v-3.1h27.3v3.1h-11.9v26.86z"></path>
+    </svg>
   );
 }

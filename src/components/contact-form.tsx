@@ -1,175 +1,186 @@
-"use client";
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
+'use client';
+import { useState, useMemo, useCallback } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { useFirestore } from '@/firebase';
+import { useToast } from '@/hooks/use-toast';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { RefreshCw } from 'lucide-react';
+import { errorEmitter } from '@/firebase/error-emitter';
+import { FirestorePermissionError } from '@/firebase/errors';
 
-type FormData = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  message: string;
-};
+const captchaQuestions = [
+  { question: 'What is 2 + 7?', answer: '9' },
+  { question: 'What is 3 + 4?', answer: '7' },
+  { question: 'What is 5 + 2?', answer: '7' },
+  { question: 'What is 6 + 1?', answer: '7' },
+];
+
+const formSchema = z.object({
+  fullName: z.string().min(2, { message: 'Full name must be at least 2 characters.' }),
+  inquiryType: z.string().min(1, { message: 'Please select an inquiry type.' }),
+  mobile: z.string().regex(/^\+?[1-9]\d{1,14}$/, { message: 'Please enter a valid mobile number.' }),
+  email: z.string().email({ message: 'Please enter a valid email address.' }),
+  message: z.string().min(10, { message: 'Message must be at least 10 characters.' }).max(1500),
+  captcha: z.string(),
+  consent: z.literal<boolean>(true, {
+    errorMap: () => ({ message: 'You must agree to the privacy policy.' }),
+  }),
+});
+
+type FormData = z.infer<typeof formSchema>;
 
 export function ContactForm() {
-  const [formData, setFormData] = useState<FormData>({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    message: "",
+  const [captchaIndex, setCaptchaIndex] = useState(0);
+  const { toast } = useToast();
+  const firestore = useFirestore();
+
+  const currentCaptcha = useMemo(() => captchaQuestions[captchaIndex], [captchaIndex]);
+
+  const {
+    register,
+    handleSubmit,
+    control,
+    reset,
+    formState: { errors, isSubmitting, isValid },
+  } = useForm<FormData>({
+    resolver: zodResolver(formSchema.extend({
+      captcha: z.string().refine(val => val === currentCaptcha.answer, {
+        message: 'Incorrect captcha answer.',
+      }),
+    })),
+    mode: 'onChange',
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const rotateCaptcha = useCallback(() => {
+    setCaptchaIndex((prev) => (prev + 1) % captchaQuestions.length);
+  }, []);
 
-  const handleInputChange = (field: keyof FormData, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
-
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      const submissionData = {
+        fullName: data.fullName,
+        inquiryType: data.inquiryType,
+        mobile: data.mobile,
+        email: data.email,
+        message: data.message,
+        captchaOK: true,
+        consent: data.consent,
+        createdAt: serverTimestamp(),
+      };
+      const submissionsCol = collection(firestore, 'contactSubmissions');
+      
+      addDoc(submissionsCol, submissionData)
+        .catch(error => {
+            const contextualError = new FirestorePermissionError({
+                path: submissionsCol.path,
+                operation: 'create',
+                requestResourceData: submissionData,
+            });
+            errorEmitter.emit('permission-error', contextualError);
+        });
 
-      if (!response.ok) {
-        throw new Error('Failed to send message');
-      }
-      
-      setSubmitStatus('success');
-      
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        message: "",
+      toast({
+        title: 'Thanks!',
+        description: "We'll get back to you shortly.",
       });
+      reset();
+      rotateCaptcha();
     } catch (error) {
-      console.error('Form submission error:', error);
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
+      console.error('Error submitting form:', error);
+      toast({
+        variant: 'destructive',
+        title: 'Submission Failed',
+        description: 'Something went wrong. Please try again.',
+      });
     }
   };
+  
+  const firstError = Object.values(errors)[0]?.message;
 
   return (
-    <div className="bg-white p-8 rounded-lg shadow-lg max-w-2xl mx-auto">
-      <h2 className="text-3xl font-light mb-8 text-[#0B0B0B]">Get In Touch</h2>
-      
-      <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Name Fields */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
+      <h2 className="text-3xl lg:text-4xl font-display">Connect With Us</h2>
+      <p className="mt-2 text-muted-foreground">Fill in your details and we’ll get back to you.</p>
+
+      <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-6">
+        {firstError && (
+          <Alert variant="destructive" role="alert">
+            <AlertDescription>{String(firstError)}</AlertDescription>
+          </Alert>
+        )}
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div>
-            <Label htmlFor="firstName" className="text-sm font-medium text-gray-900">
-              First Name *
-            </Label>
-            <Input
-              id="firstName"
-              type="text"
-              value={formData.firstName}
-              onChange={(e) => handleInputChange('firstName', e.target.value)}
-              required
-              className="mt-1 bg-white text-gray-900 border-gray-300 placeholder:text-gray-500 focus:ring-0 focus:border-gray-400"
-              placeholder="Your first name"
-            />
+            <Label htmlFor="fullName">Full Name</Label>
+            <Input id="fullName" {...register('fullName')} className="mt-1" />
           </div>
           <div>
-            <Label htmlFor="lastName" className="text-sm font-medium text-gray-900">
-              Last Name *
-            </Label>
-            <Input
-              id="lastName"
-              type="text"
-              value={formData.lastName}
-              onChange={(e) => handleInputChange('lastName', e.target.value)}
-              required
-              className="mt-1 bg-white text-gray-900 border-gray-300 placeholder:text-gray-500 focus:ring-0 focus:border-gray-400"
-              placeholder="Your last name"
-            />
+            <Label htmlFor="inquiryType">Inquiry Type</Label>
+             <Select name="inquiryType" onValueChange={(value) => control.setValue('inquiryType', value, { shouldValidate: true })}>
+                <SelectTrigger id="inquiryType" className="mt-1">
+                    <SelectValue placeholder="Please choose an option" />
+                </SelectTrigger>
+                <SelectContent>
+                    <SelectItem value="Sales">Sales</SelectItem>
+                    <SelectItem value="Sourcing">Sourcing</SelectItem>
+                    <SelectItem value="Partnership">Partnership</SelectItem>
+                    <SelectItem value="Careers">Careers</SelectItem>
+                    <SelectItem value="General">General</SelectItem>
+                </SelectContent>
+            </Select>
           </div>
         </div>
 
-        {/* Contact Fields */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div>
-            <Label htmlFor="email" className="text-sm font-medium text-gray-900">
-              Email Address *
-            </Label>
-            <Input
-              id="email"
-              type="email"
-              value={formData.email}
-              onChange={(e) => handleInputChange('email', e.target.value)}
-              required
-              className="mt-1 bg-white text-gray-900 border-gray-300 placeholder:text-gray-500 focus:ring-0 focus:border-gray-400"
-              placeholder="your.email@example.com"
-            />
+            <Label htmlFor="mobile">Mobile Number</Label>
+            <Input id="mobile" type="tel" {...register('mobile')} placeholder="+971 52 000 0000" className="mt-1" />
           </div>
           <div>
-            <Label htmlFor="phone" className="text-sm font-medium text-gray-900">
-              Phone Number
-            </Label>
-            <Input
-              id="phone"
-              type="tel"
-              value={formData.phone}
-              onChange={(e) => handleInputChange('phone', e.target.value)}
-              className="mt-1 bg-white text-gray-900 border-gray-300 placeholder:text-gray-500 focus:ring-0 focus:border-gray-400"
-              placeholder="(555) 123-4567"
-            />
+            <Label htmlFor="email">E-mail</Label>
+            <Input id="email" type="email" {...register('email')} className="mt-1" />
           </div>
         </div>
 
-        {/* Message */}
         <div>
-          <Label htmlFor="message" className="text-sm font-medium text-gray-900">
-            Message *
+          <Label htmlFor="message">Message</Label>
+          <Textarea id="message" rows={6} {...register('message')} className="mt-1" />
+        </div>
+
+        <div className="flex flex-wrap items-center gap-4">
+          <Label htmlFor="captcha" className="whitespace-nowrap">{currentCaptcha.question}</Label>
+          <div className="flex items-center gap-2">
+            <Input id="captcha" {...register('captcha')} className="w-24" />
+            <Button type="button" variant="ghost" size="icon" onClick={rotateCaptcha} aria-label="New captcha question">
+              <RefreshCw className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+
+        <div className="flex items-start space-x-2">
+          <Checkbox id="consent" {...register('consent')} className="mt-1" />
+          <Label htmlFor="consent" className="text-sm text-muted-foreground">
+            I agree to be contacted and accept the <a href="/privacy-policy" className="underline hover:text-brand">Privacy Policy</a>.
           </Label>
-          <Textarea
-            id="message"
-            value={formData.message}
-            onChange={(e) => handleInputChange('message', e.target.value)}
-            required
-            className="mt-1 min-h-[120px] bg-white text-gray-900 border-gray-300 placeholder:text-gray-500 focus:ring-0 focus:border-gray-400"
-            placeholder="Please provide details about your inquiry..."
-          />
         </div>
 
-        {/* Submit Button */}
-        <div className="flex flex-col gap-4">
-          <Button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full bg-[#0B0B0B] text-white hover:bg-[#0B0B0B]/90 py-3"
-          >
-            {isSubmitting ? 'Sending...' : 'Send Message'}
-          </Button>
-
-          {/* Status Messages */}
-          {submitStatus === 'success' && (
-            <div className="text-green-600 text-sm text-center">
-              Thank you! Your message has been sent successfully. We'll get back to you soon.
-            </div>
-          )}
-          {submitStatus === 'error' && (
-            <div className="text-red-600 text-sm text-center">
-              There was an error sending your message. Please try again or contact us directly.
-            </div>
-          )}
-        </div>
+        <Button
+          type="submit"
+          className="w-full bg-brand hover:bg-brand-600 text-white"
+          disabled={!isValid || isSubmitting}
+        >
+          {isSubmitting ? 'Submitting...' : 'SUBMIT'}
+        </Button>
       </form>
     </div>
   );
