@@ -2,16 +2,16 @@ import { FeaturedProjectCard } from "@/components/featured-project-card";
 
 const projects = [
   {
-    title: "Rolex Tower",
+    title: "",
     category: "Mixed-use",
-    location: "Dubai - Sheikh Zayed Road",
+    location: "",
     imageUrl: "/assets/images/header_courosel-2.png",
     imageHint: "city skyscraper",
   },
   {
-    title: "Seddiqi Holding HQ",
-    category: "Offices",
-    location: "Dubai - Sheikh Zayed Road",
+    title: "",
+    category: "Mixed-use",
+    location: "",
     imageUrl: "/assets/images/header_courosel-9.png",
     imageHint: "modern office building",
   },

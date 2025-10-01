@@ -30,13 +30,13 @@ export const aboutImages = {
 };
   
 export const aboutStats = [
-    { value: "65 +", label: "Satisfied Customers" },
-    { value: "178", label: "Team Members" }
+    { value: "20 +", label: "Satisfied Customers" },
+    // { value: "178", label: "Team Members" }
 ];
   
 export const aboutMilestones = [
-    { value: "1962", label: "Since We Started" },
-    { value: "185,000 m²", label: "Designed And Built" }
+    // { value: "1962", label: "Since We Started" },
+    { value: "20,000 m²", label: "Designed And Built" }
 ];
   
 export const aboutServices = [
