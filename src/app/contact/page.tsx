@@ -6,9 +6,8 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator,
   } from '@/components/breadcrumb';
-import { LocationsScroller } from '@/components/locations-scroller';
 import { ContactForm } from '@/components/contact-form';
-import { locations } from '@/data/locations';
+import { HeadOfficeCard } from '@/components/head-office-card';
 import Image from 'next/image';
   
 export default function ContactPage() {
@@ -44,15 +43,20 @@ export default function ContactPage() {
             </div>
           </section>
 
-          <section className="py-12 md:py-20 lg:py-24">
-            <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-                <LocationsScroller locations={locations} />
-            </div>
-          </section>
-
            <section className="py-12 md:py-20 lg:py-24 bg-[#F5F6F6]">
             <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-              <ContactForm />
+              <div className="text-center mb-12">
+                <h2 className="text-4xl md:text-5xl font-light text-[#5C0A17]">Connect With Us</h2>
+                <p className="mt-2 text-gray-600">Fill in your details and we’ll get back to you.</p>
+              </div>
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <div className="lg:col-span-7">
+                    <ContactForm />
+                </div>
+                <div className="lg:col-span-5">
+                    <HeadOfficeCard />
+                </div>
+              </div>
             </div>
           </section>
         </main>
