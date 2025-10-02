@@ -16,7 +16,7 @@ export default function ContactPage() {
         <main className="min-h-screen">
           <section className="relative h-[45vh] md:h-[56vh] w-full">
             <Image
-                src="/assets/contact/hero-contact.jpg"
+                src="/assets/images/project-2.jpeg"
                 alt="Contact Us Hero Image"
                 fill
                 className="object-cover"
