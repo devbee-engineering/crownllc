@@ -5,7 +5,7 @@ const projects = [
     title: "",
     category: "Mixed-use",
     location: "",
-    imageUrl: "/assets/images/header_courosel-2.png",
+    imageUrl: "/assets/images/project-2.jpeg",
     imageHint: "city skyscraper",
   },
   {

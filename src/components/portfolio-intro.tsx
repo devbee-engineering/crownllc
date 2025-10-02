@@ -9,7 +9,7 @@ const featuredProject = {
   title: "Makteb Building",
   category: "Mixed-use",
   location: "",
-  imageUrl: "/assets/images/header_courosel-2.png",
+  imageUrl: "/assets/images/project-2.jpeg",
   imageHint: "city skyscraper",
 };
 

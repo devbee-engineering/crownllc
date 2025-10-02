@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import React, { useRef, useState, useCallback } from 'react';
@@ -19,15 +20,17 @@ export function LocationsScroller({ locations }: LocationsScrollerProps) {
   const checkScrollability = useCallback(() => {
     const el = scrollContainerRef.current;
     if (el) {
+      // A little buffer to account for subpixel rendering
+      const scrollEnd = el.scrollWidth - el.clientWidth - 1;
       setCanScrollLeft(el.scrollLeft > 0);
-      setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 1);
+      setCanScrollRight(el.scrollLeft < scrollEnd);
     }
   }, []);
 
   const scroll = (direction: 'left' | 'right') => {
     const el = scrollContainerRef.current;
     if (el) {
-      const scrollAmount = el.clientWidth * 0.8; // Scroll by 80% of the container width
+      const scrollAmount = el.clientWidth; 
       el.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
         behavior: 'smooth',
@@ -38,15 +41,20 @@ export function LocationsScroller({ locations }: LocationsScrollerProps) {
   React.useEffect(() => {
     const el = scrollContainerRef.current;
     if (el) {
-      el.addEventListener('scroll', checkScrollability);
-      window.addEventListener('resize', checkScrollability);
-      checkScrollability(); // Initial check
+      checkScrollability();
+      const debouncedCheck = () => setTimeout(checkScrollability, 100);
+      el.addEventListener('scroll', debouncedCheck);
+      window.addEventListener('resize', debouncedCheck);
+      
+      // Also check on mount and after a short delay for initial render
+      setTimeout(checkScrollability, 100);
+
       return () => {
-        el.removeEventListener('scroll', checkScrollability);
-        window.removeEventListener('resize', checkScrollability);
+        el.removeEventListener('scroll', debouncedCheck);
+        window.removeEventListener('resize', debouncedCheck);
       };
     }
-  }, [checkScrollability]);
+  }, [checkScrollability, locations]);
 
 
   return (
@@ -82,13 +90,13 @@ export function LocationsScroller({ locations }: LocationsScrollerProps) {
 
         <div
             ref={scrollContainerRef}
-            className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth pb-6 -mb-6"
+            className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth pb-6 -mb-6 -ml-4"
             style={{ scrollbarWidth: 'none', '-ms-overflow-style': 'none' }}
         >
             {locations.map((location, index) => (
             <div
                 key={index}
-                className="flex-shrink-0 w-full md:w-1/2 snap-center px-4 first:pl-0 last:pr-0"
+                className="flex-shrink-0 w-full md:w-1/2 snap-center px-4 first:pl-4 last:pr-4"
             >
                 <LocationCard location={location} />
             </div>

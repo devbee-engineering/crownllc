@@ -22,36 +22,36 @@ export function Footer() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-[15px]">
             <div>
-              <h3 className="text-sm uppercase tracking-widest text-black/60 mb-4">
+              <h3 className="text-lg font-bold uppercase tracking-widest text-black mb-6 border-b-2 border-black/20 pb-2">
                 Location
               </h3>
-              <address className="not-italic text-black/80 leading-relaxed">
-                  <p>Office no 302, Makateb Building</p>
-                  <p>Maktoum road,</p>
-                  <p>Deira - Dubai, UAE</p>
+              <address className="not-italic text-black font-semibold leading-relaxed space-y-1">
+                  <p className="font-bold">Office no 302, Makateb Building</p>
+                  <p className="font-bold">Maktoum road,</p>
+                  <p className="font-bold">Deira - Dubai, UAE</p>
               </address>
             </div>
             <div>
-                <h3 className="text-sm uppercase tracking-widest text-black/60 mb-4">
+                <h3 className="text-lg font-bold uppercase tracking-widest text-black mb-6 border-b-2 border-black/20 pb-2">
                     Contact Us
                 </h3>
-                <ul className="space-y-2 text-black/80">
-                    <li>
-                    Phone:{" "}
+                <ul className="space-y-3 text-black">
+                    <li className="font-semibold">
+                    <span className="font-bold">Phone:</span>{" "}
                     <a
                         itemProp="telephone"
                         href="tel:+9711234567"
-                        className="underline decoration-neutral-400 underline-offset-4 hover:decoration-current"
+                        className="font-bold underline decoration-neutral-400 underline-offset-4 hover:decoration-current hover:text-blue-600 transition-colors"
                     >
                         +971-123-4567
                     </a>
                     </li>
-                    <li>
-                    Email:{" "}
+                    <li className="font-semibold">
+                    <span className="font-bold">Email:</span>{" "}
                     <a
                         itemProp="email"
                         href="mailto:info@crownpillars.com"
-                        className="underline decoration-neutral-400 underline-offset-4 hover:decoration-current"
+                        className="font-bold underline decoration-neutral-400 underline-offset-4 hover:decoration-current hover:text-blue-600 transition-colors"
                     >
                         info@crownpillars.com
                     </a>

@@ -20,7 +20,7 @@ export const projects: Project[] = [
         slug: "capricorn-tower",
         title: "",
         category: "Mixed-use",
-        hero: "/assets/services/services_image-1.png",
+        hero: "/assets/images/project-1.jpeg",
         intro: {
             left: "The Capricorn Tower, a 46-story mixed-use building, is a significant landmark on Sheikh Zayed Road. Its design integrates residential, commercial, and retail spaces, offering a vibrant urban living experience. The tower's unique architectural form, characterized by its curved facade and distinctive crown, sets it apart in the Dubai skyline.",
             right1: "Our involvement in this project spanned from concept design to final construction management. We implemented innovative engineering solutions to address the complexities of the site and the ambitious design, ensuring the timely delivery of a high-quality, iconic structure that has become synonymous with Dubai's architectural prowess.",
@@ -62,7 +62,7 @@ export const projects: Project[] = [
         slug: "rolex-tower",
         title: "",
         category: "Mixed-use",
-        hero: "/assets/images/header_courosel-2.png",
+        hero: "/assets/images/project-2.jpeg",
         intro: {
             left: "The Rolex Tower is another masterpiece on Sheikh Zayed Road, known for its elegant and timeless design. This project required meticulous attention to detail to meet the highest standards of luxury and quality.",
             right1: "As the main contractor, we managed all aspects of construction, delivering a building that is both a commercial success and an architectural icon.",
@@ -78,7 +78,7 @@ export const projects: Project[] = [
             scope: ["General Contracting", "Construction Management"],
         },
         gallery: [
-            { src: "/assets/images/header_courosel-2.png", alt: "Exterior of Rolex Tower" },
+            { src: "/assets/images/project-1.jpeg", alt: "Exterior of Rolex Tower" },
             { src: "/assets/expertise/expertise_image-4.png", alt: "High-rise tower at dusk with warm interior lighting"},
         ],
         next: {
@@ -91,7 +91,7 @@ export const projects: Project[] = [
         slug: "seddiqi-holding-hq",
         title: "",
         category: "Offices",
-        hero: "/assets/images/header_courosel-9.png",
+        hero: "/assets/images/project-3.jpeg",
         intro: {
             left: "The headquarters for Seddiqi Holding is a state-of-the-art office building designed for a modern workforce.",
             right1: "We provided a full design and build service, creating a collaborative and inspiring work environment.",
