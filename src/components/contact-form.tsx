@@ -187,7 +187,7 @@ export function ContactForm() {
         </div>
 
         <div className="flex flex-col gap-4 items-center">
-          <Button type="submit" disabled={isSubmitting} className="w-1/2 bg-[#5C0A17] text-white hover:bg-[#7a1522] py-3 text-base font-bold">
+          <Button type="submit" disabled={isSubmitting} className="w-1/2 bg-blue-900 text-white hover:bg-blue-800 py-3 text-base font-bold">
             {isSubmitting ? 'SUBMITTING...' : 'SUBMIT'}
           </Button>
 
