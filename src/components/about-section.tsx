@@ -33,7 +33,7 @@ export function AboutSection() {
               </h2>
             </div>
             <div className="mt-8 lg:mt-auto lg:order-3">
-              <StatBlock number="65+" label="Clients" />
+              <StatBlock number="20+" label="Clients" />
             </div>
             <div className="lg:hidden my-8 lg:order-2">
                <ImageCard />
