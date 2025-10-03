@@ -15,13 +15,14 @@ import { ProjectGallery } from "@/components/project-gallery";
 import { NextProject } from "@/components/next-project";
 
 type ServicePageProps = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
-export default function ServicePage({ params }: ServicePageProps) {
-  const service = services.find((s) => s.slug === params.slug);
+export default async function ServicePage({ params }: ServicePageProps) {
+  const { slug } = await params;
+  const service = services.find((s) => s.slug === slug);
 
   if (!service) {
     notFound();

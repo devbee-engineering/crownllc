@@ -91,7 +91,11 @@ export function LocationsScroller({ locations }: LocationsScrollerProps) {
         <div
             ref={scrollContainerRef}
             className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth pb-6 -mb-6 -ml-4"
-            style={{ scrollbarWidth: 'none', '-ms-overflow-style': 'none' }}
+            style={{ 
+                scrollbarWidth: 'none',
+                msOverflowStyle: 'none',
+                WebkitScrollbar: { display: 'none' }
+            } as React.CSSProperties}
         >
             {locations.map((location, index) => (
             <div
