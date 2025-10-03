@@ -25,7 +25,7 @@ export function ExpertiseSection() {
                   className="mt-4 text-6xl md:text-7xl lg:text-8xl font-light tracking-tight text-[#0B0B0B]"
                   style={{ lineHeight: 0.95 }}
                 >
-                  Expertise
+                  Residential building
                 </h2>
               </div>
               <div className="mt-8">

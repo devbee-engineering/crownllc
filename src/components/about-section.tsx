@@ -20,7 +20,7 @@ export function AboutSection() {
               <p className="text-sm uppercase tracking-widest text-gray-500">
                 About us
               </p>
-              <h2
+              {/* <h2
                 id="about-heading"
                 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-none text-[#0B0B0B]"
                 style={{ lineHeight: 0.95 }}
@@ -30,7 +30,7 @@ export function AboutSection() {
                 Solutions Are
                 <br />
                 The Same
-              </h2>
+              </h2> */}
             </div>
             <div className="mt-8 lg:mt-auto lg:order-3">
               <StatBlock number="20+" label="Clients" />

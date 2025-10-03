@@ -3,15 +3,15 @@ import { FeaturedProjectCard } from "@/components/featured-project-card";
 const projects = [
   {
     title: "",
-    category: "Mixed-use",
-    location: "",
+    category: "Makteb-Building",
+    location: "Dubai UAE",
     imageUrl: "/assets/images/project-2.jpeg",
     imageHint: "city skyscraper",
   },
   {
     title: "",
-    category: "Mixed-use",
-    location: "",
+    category: "Working-Space",
+    location: "Abudhabi",
     imageUrl: "/assets/images/header_courosel-9.png",
     imageHint: "modern office building",
   },

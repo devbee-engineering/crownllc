@@ -38,7 +38,7 @@ export function BannerCarousel({ children }: BannerCarouselProps) {
       setCurrentImageIndex((prevIndex) => 
         prevIndex === carouselImages.length - 1 ? 0 : prevIndex + 1
       );
-    }, 4000); // Change image every 4 seconds
+    }, 3000); // Change image every 3 seconds for more dynamic feel
 
     return () => clearInterval(interval);
   }, []);

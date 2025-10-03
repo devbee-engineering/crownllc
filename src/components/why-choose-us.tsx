@@ -33,7 +33,7 @@ export function WhyChooseUs() {
         </div>
         
         <div className="mb-8 md:mb-12">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-blue-600" style={{ lineHeight: 0.95 }}>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight" style={{ lineHeight: 0.95, color: '#123458' }}>
             Why Choose Us
           </h2>
         </div>
@@ -46,10 +46,10 @@ export function WhyChooseUs() {
                   <CheckCircle className="h-6 w-6 text-[#0B0B0B]" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-blue-600 mb-2">
+                  <h3 className="text-lg font-semibold mb-2" style={{ color: '#b99459ff' }}>
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
+                  <p className="text-black text-sm leading-relaxed">
                     {item.description}
                   </p>
                 </div>
