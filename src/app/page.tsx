@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { slides } from "@/lib/slides";
 import { Slide } from "@/components/slide";
 import { Navigation } from "@/components/navigation";
@@ -13,6 +13,15 @@ import { FloatingContactButton } from "@/components/floating-contact-button";
 
 export default function Home() {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+
+  // Auto-scroll functionality
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlideIndex((prevIndex) => (prevIndex + 1) % slides.length);
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
   const handleNext = () => {
     setCurrentSlideIndex((prevIndex) => (prevIndex + 1) % slides.length);

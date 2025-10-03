@@ -7,8 +7,8 @@ import data from "@/lib/placeholder-images.json";
 
 const featuredProject = {
   title: "Makteb Building",
-  category: "Mixed-use",
-  location: "",
+  category: "DIFC",
+  location: "Dubai UAE",
   imageUrl: "/assets/images/project-2.jpeg",
   imageHint: "city skyscraper",
 };
@@ -18,8 +18,8 @@ export function PortfolioIntro() {
 
   return (
     <section className="bg-white text-black">
-      <div className="hidden lg:grid lg:grid-cols-[2fr_1fr_2.5fr] min-h-screen">
-        {/* Left Band: Background Image */}
+      {/* <div className="hidden lg:grid lg:grid-cols-[2fr_1fr_2.5fr] min-h-screen">
+        
         <div className="relative">
           {portfolioBg && (
             <Image
@@ -32,7 +32,7 @@ export function PortfolioIntro() {
           )}
           <div className="absolute inset-0 bg-black/10"></div>
           <div className="relative z-10 p-8">
-            {/* <Logo className="border-gray-800 text-gray-800" /> */}
+           
           </div>
           {portfolioBg && (
              <div className="absolute bottom-8 left-8 z-10 text-white text-sm">
@@ -41,7 +41,7 @@ export function PortfolioIntro() {
           )}
         </div>
 
-        {/* Middle Band: Eyebrow and CTA */}
+       
         <div className="relative flex flex-col justify-center items-center px-4">
           <div className="absolute top-1/4 -translate-y-1/2">
             <p
@@ -63,14 +63,14 @@ export function PortfolioIntro() {
           </div>
         </div>
 
-        {/* Right Band: Featured Project */}
+        
         <div className="flex items-center justify-center p-8 xl:p-16">
           <FeaturedProjectCard project={featuredProject} />
         </div>
-      </div>
+      </div> */}
 
       {/* Responsive Layout for Tablet and Mobile */}
-      <div className="lg:hidden px-4 sm:px-6 py-12 md:py-16">
+      {/* <div className="lg:hidden px-4 sm:px-6 py-12 md:py-16">
         <p className="text-sm tracking-[0.2em] text-gray-400 font-medium mb-8">PORTFOLIO</p>
         <FeaturedProjectCard project={featuredProject} />
          <div className="mt-8 flex justify-center">
@@ -84,7 +84,7 @@ export function PortfolioIntro() {
               </div>
             </button>
           </div>
-      </div>
+      </div> */}
     </section>
   );
 }

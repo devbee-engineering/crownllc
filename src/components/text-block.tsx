@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const content = [
   {
-    title: "Who We Are",
+    title: "",
     paragraph:
       "CROWN PILLARS BUILDING CONTRACTING is a fully licensed building contracting company offering complete construction solutions for residential and commercial projects. Our expertise covers design coordination, civil works, structural works, MEP coordination, and finishing works.",
   },
