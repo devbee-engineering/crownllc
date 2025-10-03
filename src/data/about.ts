@@ -18,14 +18,18 @@ export const aboutImages = {
     missionHero: "/assets/about/about-img-3.png",
     timeline: [
       {
-        year: 1964,
-        title: "Al Maktoum Hospital",
-        city: "Dubai",
+        // year: 1964,
+        title: "",
+        city: "",
         body:
-          "Male and female wards, maternity ward, and elevated concrete water storage tank.",
+          "",
         image: "/assets/about/about-img-5.png"
       },
-      { year: 1967, title: "Dubai Petroleum HQ", city: "Dubai", body: "The first high-rise building in Dubai, a landmark project that set the stage for the city's future growth.", image: "/assets/about/about-img-9.png" }
+      { 
+        // year: 1967, 
+        title: "",
+        city: "", 
+        body: "", image: "/assets/about/about-img-9.png" }
     ]
 };
   

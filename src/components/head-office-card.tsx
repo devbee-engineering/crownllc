@@ -12,7 +12,7 @@ const WhatsAppIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 export function HeadOfficeCard() {
     return (
-        <div className="bg-[#5C0A17] text-white p-8 rounded-2xl shadow-lg h-full flex flex-col justify-between">
+        <div className="bg-blue-900 text-white p-8 rounded-2xl shadow-lg h-full flex flex-col justify-between">
             <div>
                 <h3 className="text-3xl font-semibold mb-6">Head Office</h3>
                 <div className="space-y-6">
@@ -32,7 +32,7 @@ export function HeadOfficeCard() {
                         <WhatsAppIcon className="size-6 mt-1 shrink-0 text-white/80" />
                         <div>
                             <p className="font-semibold text-sm text-white/80">Whatsapp</p>
-                            <a href="https://wa.me/9711234567" target="_blank" rel="noopener noreferrer" className="hover:underline">+971-123-4567</a>
+                            <a href="https://wa.me/971566500795" target="_blank" rel="noopener noreferrer" className="hover:underline">+971 566 500 795</a>
                         </div>
                     </div>
                      <div className="flex items-start gap-4">
@@ -46,7 +46,7 @@ export function HeadOfficeCard() {
                         <PhoneIcon className="size-5 mt-1 shrink-0 text-white/80" aria-hidden="true" />
                         <div>
                              <p className="font-semibold text-sm text-white/80">Call</p>
-                            <a href="tel:+9711234567" className="hover:underline">+971-123-4567</a>
+                            <a href="tel:+9711234567" className="hover:underline">+971 566 500 795</a>
                         </div>
                     </div>
                 </div>

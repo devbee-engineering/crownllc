@@ -43,7 +43,7 @@ export function Footer() {
                         href="tel:+9711234567"
                         className="font-bold underline decoration-neutral-400 underline-offset-4 hover:decoration-current hover:text-blue-600 transition-colors"
                     >
-                        +971-123-4567
+                        +971 566 500 795
                     </a>
                     </li>
                     <li className="font-semibold">

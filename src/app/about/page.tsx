@@ -123,14 +123,14 @@ export default function AboutPage() {
         </section>
 
         {/* History Timeline Section */}
-        <section className="py-12 md:py-20 lg:py-24 bg-[#F5F6F6]">
+        {/* <section className="py-12 md:py-20 lg:py-24 bg-[#F5F6F6]">
             <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
                  <div className="flex justify-between items-center mb-16">
                     <SectionEyebrow>OUR HISTORY</SectionEyebrow>
                  </div>
                 <HistoryTimeline />
             </div>
-        </section>
+        </section> */}
       </main>
     </div>
   );
