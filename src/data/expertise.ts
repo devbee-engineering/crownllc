@@ -19,11 +19,29 @@ export const expertiseDetails = [
     },
     {
         title: "Renovation & Fit-Out Works",
-        body: "Interior finishing and upgrades"
+        intro: "At CROWN PILLARS BUILDING CONTRACTING, we specialize in delivering high-quality renovation and fit-out solutions tailored to meet the unique needs of our clients. Whether it's enhancing residential spaces, upgrading commercial facilities, or transforming industrial properties, our team ensures every project is executed with precision, creativity, and efficiency.",
+        sections: [
+            {
+                heading: "Our Renovation Services",
+                points: [
+                    "Residential Upgrades – Modernizing villas, apartments, and houses with functional layouts and elegant finishes.",
+                    "Commercial Renovations – Redesigning offices, retail outlets, and hospitality spaces to improve usability and brand image.",
+                    "Industrial Improvements – Refurbishing warehouses, factories, and facilities to meet operational standards and safety compliance."
+                ]
+            },
+            {
+                heading: "Our Fit-Out Solutions",
+                points: [
+                    "Turnkey Fit-Outs – From concept to completion, we provide fully integrated fit-out solutions that bring your vision to life.",
+                    "Interior Design & Execution – Bespoke designs combined with superior craftsmanship for offices, showrooms, and luxury residences.",
+                    "MEP & Technical Works – Expert installation of mechanical, electrical, and plumbing systems to ensure seamless functionality."
+                ]
+            }
+        ]
     },
     {
         title: "Project Management ",
-        body: "End-to-end coordination for smooth execution"
+        body: "Project Management From initial planning and cost control to execution and final handover, our dedicated team oversees every stage with precision and transparency. We coordinate resources, manage timelines, and maintain strict adherence to budgets, allowing clients to focus on their vision while we handle the complexities of construction. With a commitment to clear communication and accountability, we ensure projects are completed on time, within budget, and in full compliance with industry standards and regulations. At CROWN PILLARS, our project management expertise guarantees efficiency, reliability, and excellence in every build."
     },
     // {
     //     title: "Visualisations",

@@ -5,7 +5,13 @@ import {
   Accordion
 } from "@/components/ui/accordion";
 
-const services = [
+type Service = {
+  value: string;
+  title: string;
+  description: string;
+};
+
+const services: Service[] = [
   {
     value: "item-1",
     title: "Commercial & Industrial Buildings",
@@ -16,7 +22,7 @@ const services = [
     value: "item-2",
     title: "Renovation & Fit-Out Works",
     description:
-      "Interior finishing and upgrades",
+      "At CROWN PILLARS BUILDING CONTRACTING, we specialize in delivering high-quality renovation and fit-out solutions tailored to meet the unique needs of our clients. Whether it’s enhancing residential spaces, upgrading commercial facilities, or transforming industrial properties, our team ensures every project is executed with precision, creativity, and efficiency.",
   },
   {
     value: "item-3",

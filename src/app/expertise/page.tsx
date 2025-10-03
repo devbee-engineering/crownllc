@@ -69,7 +69,28 @@ export default function ExpertisePage() {
                                 <h3 className="text-2xl md:text-3xl font-medium">{detail.title}</h3>
                             </div>
                             <div className="lg:col-span-2">
-                                <p className="text-base text-gray-700 leading-relaxed max-w-prose">{detail.body}</p>
+                                {detail.intro ? (
+                                    // New structure for Renovation & Fit-Out Works
+                                    <div className="space-y-6">
+                                        <p className="text-base text-gray-700 leading-relaxed max-w-prose">{detail.intro}</p>
+                                        {detail.sections?.map((section, sectionIndex) => (
+                                            <div key={sectionIndex} className="space-y-3">
+                                                <h4 className="text-lg font-semibold text-gray-900">{section.heading}</h4>
+                                                <ul className="space-y-2">
+                                                    {section.points.map((point, pointIndex) => (
+                                                        <li key={pointIndex} className="text-base text-gray-700 leading-relaxed flex items-start">
+                                                            <span className="text-amber-500 mr-2 mt-1">•</span>
+                                                            <span>{point}</span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        ))}
+                                    </div>
+                                ) : (
+                                    // Original structure for other items
+                                    <p className="text-base text-gray-700 leading-relaxed max-w-prose">{detail.body}</p>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -82,12 +103,12 @@ export default function ExpertisePage() {
           alt={expertiseAlts.lobby}
         />
 
-        <ExpertiseBlock
+        {/* <ExpertiseBlock
           index="02"
           title="Commercial & Industrial Buildings "
           col1="Our Commercial & Industrial Buildings Division specializes in delivering high-performance spaces that support business operations and drive efficiency. From office buildings and retail outlets to warehouses, factories, and showrooms, we offer complete turnkey solutions that include design coordination, structural works, MEP installations, and interior finishing."
           col2="We work closely with consultants and business owners to ensure that every facility is functional, compliant with UAE regulations, and optimized for productivity. Whether you need a single warehouse or a full-scale industrial facility, we provide robust, durable, and cost-efficient solutions that meet your business goals."
-        />
+        /> */}
 
         <TwoUpImages
           image1={{ src: expertiseImages.detail, alt: expertiseAlts.detail }}
