@@ -19,7 +19,7 @@ export const projects: Project[] = [
     {
         slug: "capricorn-tower",
         title: "",
-        category: "Mixed-use",
+        category: "Offices",
         hero: "/assets/images/project-1.jpeg",
         intro: {
             left: "The Capricorn Tower, a 46-story mixed-use building, is a significant landmark on Sheikh Zayed Road. Its design integrates residential, commercial, and retail spaces, offering a vibrant urban living experience. The tower's unique architectural form, characterized by its curved facade and distinctive crown, sets it apart in the Dubai skyline.",
@@ -33,7 +33,7 @@ export const projects: Project[] = [
         },
         specs: {
             location: "",
-            type: "Mixed-use",
+            type: "Offices",
             project: "Capricorn Tower",
             details: "A 46-story mixed-use tower featuring residential apartments, office spaces, and retail outlets, with a distinctive architectural design.",
             client: "Arenco Real Estate LLC",
@@ -61,7 +61,7 @@ export const projects: Project[] = [
     {
         slug: "rolex-tower",
         title: "",
-        category: "Mixed-use",
+        category: "Offices",
         hero: "/assets/images/project-2.jpeg",
         intro: {
             left: "The Rolex Tower is another masterpiece on Sheikh Zayed Road, known for its elegant and timeless design. This project required meticulous attention to detail to meet the highest standards of luxury and quality.",

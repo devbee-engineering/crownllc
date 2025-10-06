@@ -18,7 +18,7 @@ export function ServiceAccordion({ items }: ServiceAccordionProps) {
       <Accordion type="single" collapsible className="w-full max-w-4xl mx-auto">
         {items.map((item, index) => (
           <AccordionItem value={`item-${index + 1}`} key={index} className="border-b border-[#E4E6E7]">
-            <AccordionTrigger className="text-xl md:text-2xl font-medium text-left py-8 group hover:no-underline">
+            <AccordionTrigger className="text-xl md:text-2xl font-medium text-left py-8 group hover:no-underline" style={{ color: '#b99459' }}>
                 <span className="flex-1">{item.title}</span>
                 <Plus className="size-6 transition-transform duration-300 group-data-[state=open]:rotate-45 group-data-[state=open]:opacity-0" />
                 <Minus className="size-6 absolute right-4 transition-transform duration-300 opacity-0 group-data-[state=open]:opacity-100" />

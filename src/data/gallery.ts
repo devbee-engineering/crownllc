@@ -18,7 +18,7 @@ export const galleryImages: GalleryImage[] = [
         title: "",
         category: "",
         projectSlug: "capricorn-tower",
-        tags: ["interior", "structure", "modern"],
+        tags: ["", "", ""],
         featured: true
     },
     {
@@ -28,7 +28,7 @@ export const galleryImages: GalleryImage[] = [
         title: "",
         category: "",
         projectSlug: "capricorn-tower",
-        tags: ["exterior", "cityscape", "dusk"],
+        tags: ["", "", ""],
         featured: true
     },
     {
@@ -38,7 +38,7 @@ export const galleryImages: GalleryImage[] = [
         title: "",
         category: "",
         projectSlug: "capricorn-tower",
-        tags: ["facade", "architecture", "detail"]
+        tags: ["", "", ""]
     },
     {
         id: "capricorn-4",
@@ -47,7 +47,7 @@ export const galleryImages: GalleryImage[] = [
         title: "",
         category: "",
         projectSlug: "capricorn-tower",
-        tags: ["facade", "detail", "architecture"]
+        tags: ["", "", ""]
     },
     {
         id: "capricorn-5",
@@ -56,7 +56,7 @@ export const galleryImages: GalleryImage[] = [
         title: "",
         category: "",
         projectSlug: "capricorn-tower",
-        tags: ["interior", "modern", "hvac"]
+        tags: ["", "", ""]
     },
     {
         id: "capricorn-6",
@@ -65,7 +65,7 @@ export const galleryImages: GalleryImage[] = [
         title: "",
         category: "",
         projectSlug: "capricorn-tower",
-        tags: ["exterior", "profile", "tower"]
+        tags: ["", "", ""]
     },
     {
         id: "capricorn-7",
@@ -74,7 +74,7 @@ export const galleryImages: GalleryImage[] = [
         title: "",
         category: "",
         projectSlug: "capricorn-tower",
-        tags: ["facade", "angle", "architecture"]
+        tags: ["", "", ""]
     },
     
     // Rolex Tower Images
@@ -85,7 +85,7 @@ export const galleryImages: GalleryImage[] = [
         title: "",
         category: "",
         projectSlug: "rolex-tower",
-        tags: ["exterior", "luxury", "tower"],
+        tags: ["", "", ""],
         featured: true
     },
     {
@@ -95,7 +95,7 @@ export const galleryImages: GalleryImage[] = [
         title: "",
         category: "",
         projectSlug: "rolex-tower",
-        tags: ["dusk", "lighting", "high-rise"]
+        tags: ["", "", ""]
     },
     
     // Seddiqi Holding HQ Images
@@ -106,7 +106,7 @@ export const galleryImages: GalleryImage[] = [
         title: "",
         category: "",
         projectSlug: "seddiqi-holding-hq",
-        tags: ["exterior", "corporate", "modern"]
+        tags: ["", "", ""]
     },
     {
         id: "seddiqi-2",
@@ -115,7 +115,7 @@ export const galleryImages: GalleryImage[] = [
         title: "",
         category: "",
         projectSlug: "seddiqi-holding-hq",
-        tags: ["facade", "dusk", "corporate"]
+        tags: ["", "", ""]
     },
      {
         id: "seddiqi-3",
@@ -124,7 +124,7 @@ export const galleryImages: GalleryImage[] = [
         title: "",
         category: "",
         projectSlug: "seddiqi-holding-hq",
-        tags: ["exterior", "corporate", "modern"]
+        tags: ["", "", ""]
     },
     {
         id: "seddiqi-4",
@@ -133,7 +133,7 @@ export const galleryImages: GalleryImage[] = [
         title: "",
         category: "",
         projectSlug: "seddiqi-holding-hq",
-        tags: ["facade", "dusk", "corporate"]
+        tags: ["", "", ""]
     },
      {
         id: "seddiqi-5",
@@ -142,7 +142,7 @@ export const galleryImages: GalleryImage[] = [
         title: "",
         category: "",
         projectSlug: "seddiqi-holding-hq",
-        tags: ["exterior", "corporate", "modern"]
+        tags: ["", "", ""]
     },
     {
         id: "seddiqi-6",
@@ -151,7 +151,7 @@ export const galleryImages: GalleryImage[] = [
         title: "",
         category: "",
         projectSlug: "seddiqi-holding-hq",
-        tags: ["facade", "dusk", "corporate"]
+        tags: ["", "", ""]
     },
      {
         id: "seddiqi-7",
@@ -160,7 +160,7 @@ export const galleryImages: GalleryImage[] = [
         title: "",
         category: "",
         projectSlug: "seddiqi-holding-hq",
-        tags: ["exterior", "corporate", "modern"]
+        tags: ["", "", ""]
     },
     {
         id: "seddiqi-8",
@@ -169,7 +169,7 @@ export const galleryImages: GalleryImage[] = [
         title: "",
         category: "",
         projectSlug: "seddiqi-holding-hq",
-        tags: ["facade", "dusk", "corporate"]
+        tags: ["", "", ""]
     },
      {
         id: "seddiqi-9",
@@ -178,7 +178,7 @@ export const galleryImages: GalleryImage[] = [
         title: "",
         category: "",
         projectSlug: "seddiqi-holding-hq",
-        tags: ["exterior", "corporate", "modern"]
+        tags: ["", "", ""]
     }
 ];
 
