@@ -16,7 +16,7 @@ export function ExpertiseBlock({ index, title, col1, col2 }: ExpertiseBlockProps
                         <p className="text-sm text-gray-400 tracking-wider">{index}</p>
                     </div>
                     <div className="lg:col-span-4">
-                        <h3 className="text-3xl md:text-4xl font-medium text-[#0B0B0B]">
+                        <h3 className="text-3xl md:text-4xl font-medium text-[#b99459ff]">
                             {titleParts.map((part, i) => (
                                 <span key={i} className="block">{part}</span>
                             ))}

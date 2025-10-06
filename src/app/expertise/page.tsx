@@ -66,7 +66,7 @@ export default function ExpertisePage() {
                         <Separator className="bg-[#E4E6E7] mb-8" />
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                             <div className="lg:col-span-1">
-                                <h3 className="text-2xl md:text-3xl font-medium">{detail.title}</h3>
+                                <h3 className="text-2xl md:text-3xl font-medium text-[#b99459ff]">{detail.title}</h3>
                             </div>
                             <div className="lg:col-span-2">
                                 {detail.intro ? (

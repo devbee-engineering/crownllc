@@ -18,7 +18,7 @@ export const services: Service[] = [
     {
         slug: "capricorn-tower",
         title: "Capricorn Tower",
-        category: "Mixed-use",
+        category: "Offices",
         hero: "/assets/services/services_image-5.png",
         intro: {
             left: "The Capricorn Tower, a 46-story mixed-use building, is a significant landmark on Sheikh Zayed Road. Its design integrates residential, commercial, and retail spaces, offering a vibrant urban living experience. The tower's unique architectural form, characterized by its curved facade and distinctive crown, sets it apart in the Dubai skyline.",
